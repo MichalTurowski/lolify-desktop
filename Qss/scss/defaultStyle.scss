@@ -1,0 +1,96 @@
+
+//===================================================//
+// FILE AUTO-GENERATED. PUT YOUR DEFAULT STYLES HERE. 
+// THESE STYLES WILL OVERIDE THE THEME STYLES
+//====================================================//
+#centralwidget{
+    border-radius: 20px;
+    //background-color: $COLOR_ACCENT_1;
+    border: none;
+}
+#header, #main_body{
+    background-color: transparent;
+    background: transparent;
+    border: none;
+}
+#close_window_button{
+    border-radius: 12px;
+}
+QLineEdit{
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 2px solid $COLOR_BACKGROUND_5;
+        &:hover {
+            border: $BORDER_SELECTION_2;
+            color: $COLOR_TEXT_1;
+        }
+
+        &:focus {
+            border: $BORDER_SELECTION_3;
+        }
+
+        &:selected {
+            background-color: $COLOR_ACCENT_2;
+            color: $COLOR_BACKGROUND_4;
+        }
+}
+#stackedWidget_2 QPushButton{
+    padding: 8px 10px;
+    border-radius: 8px;
+    background-color: $COLOR_ACCENT_3;
+    color: $COLOR_BACKGROUND_3;
+        &:hover {
+            background-color: $COLOR_ACCENT_1;
+            color: $COLOR_BACKGROUND_1;
+        }
+
+        &:focus {
+            background-color: $COLOR_ACCENT_3;
+            color: $COLOR_BACKGROUND_3;
+        }
+
+        &:selected {
+            background-color: $COLOR_ACCENT_3;
+            color: $COLOR_BACKGROUND_3;
+        }
+}
+#stackedWidget{
+    background-color: $COLOR_ACCENT_3;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;    
+}
+#stackedWidget *{
+    color: #f5f5f5;
+    background-color: transparent;
+}
+#stackedWidget QPushButton{
+    padding: 8px 10px;
+    border-radius: 8px;
+    background-color: transparent;
+    border: 2px solid $COLOR_BACKGROUND_1;
+    color: $COLOR_BACKGROUND_1;
+        &:hover {
+            color: $COLOR_BACKGROUND_1;
+        }
+
+        &:focus {
+            color: $COLOR_BACKGROUND_3;
+        }
+
+        &:selected {
+            background-color: $COLOR_ACCENT_3;
+            color: $COLOR_BACKGROUND_3;
+        }
+}
+#notificationSlide{
+    background-color: $COLOR_BACKGROUND_2;
+    border-radius: 10px;
+}
+#notificationSlide *{
+    background-color: transparent;
+    //color: $COLOR_BACKGROUND_1;
+}
+//===================================================//
+// END //
+//====================================================//
+            

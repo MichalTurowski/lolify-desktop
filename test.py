@@ -6,10 +6,11 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def get_all_champions():
     response = requests.get("https://lolify.fly.dev/api/champion")
 
-#print(response.status_code)
+    # print(response.status_code)
 
     champions = response.json()
 
@@ -19,16 +20,17 @@ def get_all_champions():
 
     return champions
 
+
 def login():
 
     payload = {
         "email": os.environ.get("ADMIN_EMAIL"),
-        "password": os.environ.get("ADMIN_PASSWORD") 
+        "password": os.environ.get("ADMIN_PASSWORD"),
     }
 
     response = requests.post("https://lolify.fly.dev/api/login", json=payload)
 
-    token = response.json()['access_token']
+    token = response.json()["access_token"]
 
     keyring.set_password("lolify", "token", token)
 
@@ -36,16 +38,16 @@ def login():
 
     # print(token)
 
-    return(token)
+    return token
+
 
 def get_token():
     return keyring.get_password("lolify", "token")
 
+
 def get_user(access_token):
-    url = 'https://lolify.fly.dev/api/me'
-    headers = {
-        'Authorization': f'Bearer {access_token}'
-    }
+    url = "https://lolify.fly.dev/api/me"
+    headers = {"Authorization": f"Bearer {access_token}"}
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
@@ -55,6 +57,7 @@ def get_user(access_token):
     else:
         # Handle errors or unauthorized access
         print("Failed to get user data. Status code:", response.status_code)
+
 
 login()
 

@@ -1,0 +1,143 @@
+{
+    "QMainWindow": [
+        {
+            "tittle": "Lolify",
+            "icon":":/font_awesome_brands/icons/font_awesome/brands/windows.png",
+			"frameless": true,
+			"transluscentBg": true,
+			"navigation":[
+				{
+					"close": "close_window_button",
+					"moveWindow": "header"
+				}
+			]
+        }
+    ],
+    "QSettings": [
+        {
+            "ThemeSettings": [
+                {
+                    "CustomTheme": [
+                        {
+                            "Background-color": "#F5F5F5",
+                            "Text-color": "#070808",
+                            "Accent-color": "#0F9696",
+                            "Icons-color": "#333333",
+                            "Theme-name": "Dark-Blue",
+                            "Default-Theme": true
+                        },
+						{
+                            "Background-color": "#16191d",
+                            "Text-color": "#F5F5F5",
+                            "Accent-color": "#03C3C3",
+                            "Icons-color": "#F5F5F5",
+                            "Theme-name": "Light-Blue",
+                            "Default-Theme": false
+                        }
+                    ]
+                }
+            ],
+            "AppSettings": {
+                "OrginizationName": "Lolify",
+                "ApplicationName": "Lolify Desktop",
+                "OrginizationDormain": "lolify.vercel.app"
+            }
+        }
+    ],
+    "QCustomQStackedWidget":[
+		{
+			"name":"stackedWidget",
+			"navigation":[
+				{
+					"navigationButtons":[
+						{
+							"to_signup": "welcome_signup_pg",
+							"to_login": "welcome_login_pg"
+						}
+					]
+				}
+			],
+            "transitionAnimation":[
+				{
+					"slide":[
+						{
+							"active": true,
+							"duration":1000,
+                            "direction": "horizontal",
+							"easingCurve": "OutBack"
+						}
+					]
+				}
+			]
+		},
+        {
+			"name":"stackedWidget_2",
+			"navigation":[
+				{
+					"navigationButtons":[
+						{
+							"to_signup": "signup_pg",
+							"to_login": "login_pg"
+						}
+					]
+				}
+			],
+            "transitionAnimation":[
+				{
+					"slide":[
+						{
+							"active": true,
+							"duration":1000,
+                            "direction": "vertical",
+							"easingCurve": "OutBack"
+						}
+					]
+				}
+			]
+		}
+	],
+	"QCustomCheckBox":[
+		{
+			"name":"checkBox",
+			"bgColor":"#DCDCDC",
+			"circleColor":"#339999",
+			"activeColor":"#99CCCC",
+			"animationEasingCurve":"InOutCubic",
+			"animationDuration":300
+		}
+	],
+	"QCustomSlideMenu": [
+		{
+			"name": "notificationSlide",
+			"defaultSize": [
+				{
+					"width": 500,
+					"height": 36
+				}
+			],
+			"collapsedSize": [
+				{
+					"width": 500,
+					"height": 0
+				}
+			],
+			"expandedSize": [
+				{
+					"width": 500,
+					"height": "auto"
+				}
+			],
+			"toggleButton": [
+				{
+					"buttonName": "closeNotification"
+				}
+			],
+			"menuTransitionAnimation": [
+				{
+					"animationDuration": 400,
+					"animationEasingCurve": "Linear"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,18 @@
+{
+  "QPushButton": [
+    {
+      "name": "closeNotification",
+      "icon": "Qss/icons/icons/feather/x.png"
+    },
+    {
+      "name": "close_window_button",
+      "icon": "Qss/icons/icons/feather/x-circle.png"
+    }
+  ],
+  "QCustomCheckBox": [
+    {
+      "name": "checkBox",
+      "icon": "Qss/icons/icons/material_design/mode_night.png"
+    }
+  ]
+}

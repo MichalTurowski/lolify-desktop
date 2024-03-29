@@ -6,6 +6,7 @@ import sys
 ########################################################################
 # IMPORT GUI FILE
 from src.ui_login_interface import *
+from src.ui_app_interface import *
 
 ########################################################################
 
@@ -40,7 +41,8 @@ class MainWindow(QMainWindow):
 
         # Event listeners
         self.ui.signInBtn.clicked.connect(
-            lambda: self.showNotification("Sign in button clicked!")
+            # lambda: self.showNotification("Sign in button clicked!")
+            lambda: self.login()
         )
         self.ui.signUpBtn.clicked.connect(
             lambda: self.showNotification("Sign up button clicked!")
@@ -77,6 +79,11 @@ class MainWindow(QMainWindow):
         # CompileStyleSheet might also work
         CompileStyleSheet.applyCompiledSass(self)
         # QAppSettings.updateAppSettings(self)
+
+    def login(self):
+        self.ui = Ui_MenuWindow()
+        self.ui.setupUi(self)
+        self.show()
 
 
 ########################################################################

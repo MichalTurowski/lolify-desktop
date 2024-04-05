@@ -81,6 +81,7 @@ class MainWindow(QMainWindow):
         # QAppSettings.updateAppSettings(self)
 
     def login(self):
+        self.hide()
         self.ui = Ui_MenuWindow()
         self.ui.setupUi(self)
         self.show()

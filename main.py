@@ -84,6 +84,8 @@ class MainWindow(QMainWindow):
         self.hide()
         self.ui = Ui_MenuWindow()
         self.ui.setupUi(self)
+        loadJsonStyle(self, self.ui, jsonFiles={"json-styles/app_style.json"})
+        QAppSettings.updateAppSettings(self)
         self.show()
 
 

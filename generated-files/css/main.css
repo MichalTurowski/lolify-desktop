@@ -1709,3 +1709,37 @@ QLineEdit {
 
 #notificationSlide * {
   background-color: transparent; }
+
+#leftMenuContainer {
+  background-color: #6FC0C0; }
+
+#leftMenuContainer * {
+  color: #f5f5f5;
+  background-color: transparent; }
+
+#leftMenuSubContainer {
+  background-color: #6FC0C0; }
+
+#leftMenuSubContainer QPushButton {
+  text-align: left;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 2px solid #F5F5F5;
+  color: #F5F5F5; }
+  #leftMenuSubContainer QPushButton:hover {
+    background-color: #0F9696;
+    color: #F5F5F5; }
+  #leftMenuSubContainer QPushButton:focus {
+    background-color: #6FC0C0;
+    color: #DCDCDC; }
+  #leftMenuSubContainer QPushButton:selected {
+    background-color: #6FC0C0;
+    color: #DCDCDC; }
+
+#centerMenuSubContainer QFrame {
+  background-color: #E8E8E8;
+  border-radius: 10px; }
+
+#centerMenuSubContainer QFrame * {
+  background-color: transparent; }

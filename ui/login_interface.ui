@@ -530,15 +530,15 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>QCustomCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>Custom_Widgets.QCustomCheckBox.h</header>
+  </customwidget>
+  <customwidget>
    <class>QCustomQStackedWidget</class>
    <extends>QStackedWidget</extends>
    <header>Custom_Widgets.QCustomQStackedWidget.h</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>QCustomCheckBox</class>
-   <extends>QCheckBox</extends>
-   <header>Custom_Widgets.QCustomCheckBox.h</header>
   </customwidget>
   <customwidget>
    <class>QCustomSlideMenu</class>

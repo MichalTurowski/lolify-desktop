@@ -1,0 +1,57 @@
+{
+    "QMainWindow": [
+        {
+            "tittle": "Lolify",
+            "icon":":/font_awesome_brands/icons/font_awesome/brands/windows.png",
+			"frameless": true,
+			"transluscentBg": true,
+			"navigation":[
+				{
+					"close": "close_window_button",
+					"moveWindow": "header"
+				}
+			]
+        }
+    ],
+    "QSettings": [
+        {
+            "ThemeSettings": [
+                {
+                    "CustomTheme": [
+                        {
+                            "Background-color": "#F5F5F5",
+                            "Text-color": "#070808",
+                            "Accent-color": "#0F9696",
+                            "Icons-color": "#333333",
+                            "Theme-name": "Dark-Blue",
+                            "Default-Theme": true
+                        },
+						{
+                            "Background-color": "#16191d",
+                            "Text-color": "#F5F5F5",
+                            "Accent-color": "#03C3C3",
+                            "Icons-color": "#F5F5F5",
+                            "Theme-name": "Light-Blue",
+                            "Default-Theme": false
+                        }
+                    ]
+                }
+            ],
+            "AppSettings": {
+                "OrginizationName": "Lolify",
+                "ApplicationName": "Lolify Desktop",
+                "OrginizationDormain": "lolify.vercel.app"
+            }
+        }
+    ],
+	"QCustomCheckBox":[
+		{
+			"name":"checkBox",
+			"bgColor":"#DCDCDC",
+			"circleColor":"#339999",
+			"activeColor":"#99CCCC",
+			"animationEasingCurve":"InOutCubic",
+			"animationDuration":300
+		}
+	]
+}

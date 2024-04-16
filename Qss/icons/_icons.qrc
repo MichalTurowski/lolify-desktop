@@ -317,6 +317,8 @@
     <file>icons/feather/zoom-out.png</file>
   </qresource>
   <qresource prefix="images">
+    <file>League of Legends.png</file>
+    <file>league-of-legends7810.jpg</file>
     <file>league-of-legends-small.jpg</file>
     <file>league-of-legends.jpg</file>
   </qresource>

@@ -1,1 +1,52 @@
-{}
+{
+  "QPushButton": [
+    {
+      "name": "menuBtn",
+      "icon": "Qss/icons/icons/feather/align-justify.png"
+    },
+    {
+      "name": "topBtn",
+      "icon": "Qss/icons/icons/font_awesome/solid/crown.png"
+    },
+    {
+      "name": "championsBtn",
+      "icon": "Qss/icons/icons/feather/list.png"
+    },
+    {
+      "name": "searchBtn",
+      "icon": "Qss/icons/icons/feather/search.png"
+    },
+    {
+      "name": "profileBtn",
+      "icon": "Qss/icons/icons/feather/user.png"
+    },
+    {
+      "name": "pushButton",
+      "icon": "Qss/icons/icons/feather/window_close.png"
+    },
+    {
+      "name": "pushButton_3",
+      "icon": "Qss/icons/icons/feather/minus.png"
+    },
+    {
+      "name": "pushButton_2",
+      "icon": "Qss/icons/icons/feather/square.png"
+    },
+    {
+      "name": "pushButton_4",
+      "icon": "Qss/icons/icons/feather/x-circle.png"
+    }
+  ],
+  "QCustomCheckBox": [
+    {
+      "name": "checkBox",
+      "icon": "Qss/icons/icons/material_design/mode_night.png"
+    }
+  ],
+  "QLabel": [
+    {
+      "name": "label_4",
+      "pixmap": "Qss/icons/League of Legends.png"
+    }
+  ]
+}

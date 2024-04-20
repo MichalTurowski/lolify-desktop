@@ -87,6 +87,18 @@ class MainWindow(QMainWindow):
         loadJsonStyle(self, self.ui, jsonFiles={"json-styles/app_style.json"})
         QAppSettings.updateAppSettings(self)
         self.show()
+        self.ui.searchBtn.clicked.connect(
+            lambda: self.ui.centerMenuContainer.expandMenu()
+        )
+        self.ui.closeMoreMenu.clicked.connect(
+            lambda: self.ui.centerMenuContainer.collapseMenu()
+        )
+        self.ui.notificationShow.clicked.connect(
+            lambda: self.ui.notificationSlide.expandMenu()
+        )
+        self.ui.closeNotification.clicked.connect(
+            lambda: self.ui.notificationSlide.collapseMenu()
+        )
 
 
 ########################################################################

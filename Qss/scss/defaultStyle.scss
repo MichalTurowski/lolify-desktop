@@ -93,6 +93,9 @@ QLineEdit{
 #leftMenuContainer{
     background-color: $COLOR_ACCENT_3;
 }
+#leftMenuContainer QPushButton{
+    text-align: left;
+}
 #leftMenuContainer *{
     color: #f5f5f5;
     background-color: transparent;

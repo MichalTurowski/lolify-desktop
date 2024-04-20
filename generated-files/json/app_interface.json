@@ -21,20 +21,28 @@
       "icon": "Qss/icons/icons/feather/user.png"
     },
     {
-      "name": "pushButton",
+      "name": "closeMoreMenu",
       "icon": "Qss/icons/icons/feather/window_close.png"
     },
     {
-      "name": "pushButton_3",
+      "name": "notificationShow",
+      "icon": "Qss/icons/icons/feather/bell.png"
+    },
+    {
+      "name": "minimize_window",
       "icon": "Qss/icons/icons/feather/minus.png"
     },
     {
-      "name": "pushButton_2",
+      "name": "restore_window",
       "icon": "Qss/icons/icons/feather/square.png"
     },
     {
-      "name": "pushButton_4",
+      "name": "close_window",
       "icon": "Qss/icons/icons/feather/x-circle.png"
+    },
+    {
+      "name": "closeNotification",
+      "icon": "Qss/icons/icons/feather/window_close.png"
     }
   ],
   "QCustomCheckBox": [
@@ -45,7 +53,7 @@
   ],
   "QLabel": [
     {
-      "name": "label_4",
+      "name": "label_logo",
       "pixmap": "Qss/icons/League of Legends.png"
     }
   ]

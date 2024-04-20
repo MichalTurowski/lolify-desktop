@@ -7,8 +7,17 @@
 			"transluscentBg": true,
 			"navigation":[
 				{
-					"close": "close_window_button",
-					"moveWindow": "header"
+					"minimize": "minimize_window",
+					"close": "close_window",
+					"restore":[
+						{	
+							"buttonName": "restore_window",
+							"normalIcon": ":/feather/icons/feather/square.png",
+							"maximizedIcon": ":/feather/icons/feather/copy.png"
+						}
+					],
+					"moveWindow": "header",
+					"tittleBar": "header"
 				}
 			]
         }
@@ -44,6 +53,45 @@
             }
         }
     ],
+    "QCustomQStackedWidget":[
+		{
+			"name":"stackedWidget_2",
+			"navigation":[
+				{
+					"navigationButtons":[
+						{
+                            "topBtn": "page_3",
+                            "championsBtn": "page_4"
+						}
+					]
+				}
+			],
+            "transitionAnimation":[
+				{
+					"slide":[
+						{
+							"active": true,
+							"duration":1000,
+                            "direction": "horizontal",
+							"easingCurve": "OutBack"
+						}
+					]
+				}
+			]
+		}
+	],
+    "QPushButtonGroup": [{
+		"Buttons": [
+			"topBtn",
+			"championsBtn",
+			"searchBtn",
+			"profileBtn"
+		],
+		"Style":[{
+			"Active": "background-color: $COLOR_ACCENT_3;",
+			"NotActive": ""
+		}]
+	}],
 	"QCustomCheckBox":[
 		{
 			"name":"checkBox",
@@ -53,5 +101,97 @@
 			"animationEasingCurve":"InOutCubic",
 			"animationDuration":300
 		}
-	]
+	],
+    "QCustomSlideMenu": [{
+		"name": "leftMenuContainer",
+		"defaultSize": [{
+			"width": 52,
+			"height": "parent"
+		}],
+		"collapsedSize": [{
+			"width": 52,
+			"height": "parent"
+		}],
+		"expandedSize": [{
+			"width": 160,
+			"height": "parent"
+		}],
+		"toggleButton": [{
+			"buttonName": "menuBtn",
+			"icons": [{
+				"whenMenuIsCollapsed": ":/feather/icons/feather/align-justify.png",
+				"whenMenuIsExpanded": ":/feather/icons/feather/chevron-left.png"
+			}]
+		}],
+		"menuTransitionAnimation": [{
+			"animationDuration": 500,
+			"animationEasingCurve": "Linear"
+		}]
+	},
+    {
+		"name": "centerMenuContainer",
+		"defaultSize": [{
+			"width": 0,
+			"height": "parent"
+		}],
+		"collapsedSize": [{
+			"width": 0,
+			"height": "parent"
+		}],
+		"expandedSize": [{
+			"width": 200,
+			"height": "parent"
+		}],
+		"menuTransitionAnimation": [{
+			"animationDuration": 500,
+			"animationEasingCurve": "Linear"
+		}]
+	},
+    {
+        "name": "notificationSlide",
+        "defaultSize": [
+            {
+                "width": 0,
+                "height": "auto"
+            }
+        ],
+        "collapsedSize": [
+            {
+                "width": 0,
+                "height": "auto"
+            }
+        ],
+        "expandedSize": [
+            {
+                "width": 500,
+                "height": 100
+            }
+        ],
+        "toggleButton": [
+            {
+                "buttonName": "closeNotification"
+            }
+        ],
+        "menuTransitionAnimation": [
+            {
+                "animationDuration": 400,
+                "animationEasingCurve": "Linear"
+            }
+        ],
+		"floatPosition": [
+			{
+				"relativeTo": "centralwidget",
+				"position": "center-center",
+				"shadow":[
+					{
+						"color": "#000",
+						"blurRadius": 20,
+						"xOffset": 0,
+						"yOffset": 0
+					}
+				]
+			}
+		]
+    }
+    ]
 }

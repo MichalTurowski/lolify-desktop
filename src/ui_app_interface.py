@@ -20,23 +20,29 @@ from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
     QStackedWidget, QVBoxLayout, QWidget)
 
 from Custom_Widgets.QCustomCheckBox import QCustomCheckBox
+from Custom_Widgets.QCustomQStackedWidget import QCustomQStackedWidget
+from Custom_Widgets.QCustomSlideMenu import QCustomSlideMenu
 class Ui_MenuWindow(object):
     def setupUi(self, MenuWindow):
         if not MenuWindow.objectName():
             MenuWindow.setObjectName(u"MenuWindow")
-        MenuWindow.resize(800, 468)
+        MenuWindow.resize(800, 469)
+        MenuWindow.setStyleSheet(u"QPushButton{\n"
+"	text-align: left;\n"
+"}")
         self.centralwidget = QWidget(MenuWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
-        self.leftMenuContainer = QWidget(self.centralwidget)
+        self.leftMenuContainer = QCustomSlideMenu(self.centralwidget)
         self.leftMenuContainer.setObjectName(u"leftMenuContainer")
+        self.leftMenuContainer.setMaximumSize(QSize(52, 16777215))
         self.verticalLayout = QVBoxLayout(self.leftMenuContainer)
         self.verticalLayout.setSpacing(0)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout.setContentsMargins(0, 9, 0, 0)
         self.leftMenuSubContainer = QWidget(self.leftMenuContainer)
         self.leftMenuSubContainer.setObjectName(u"leftMenuSubContainer")
         self.verticalLayout_2 = QVBoxLayout(self.leftMenuSubContainer)
@@ -47,10 +53,10 @@ class Ui_MenuWindow(object):
         self.frame.setObjectName(u"frame")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_3 = QVBoxLayout(self.frame)
-        self.verticalLayout_3.setSpacing(0)
-        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_8 = QHBoxLayout(self.frame)
+        self.horizontalLayout_8.setSpacing(0)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.menuBtn = QPushButton(self.frame)
         self.menuBtn.setObjectName(u"menuBtn")
         font = QFont()
@@ -59,9 +65,9 @@ class Ui_MenuWindow(object):
         icon = QIcon()
         icon.addFile(u":/feather/icons/feather/align-justify.png", QSize(), QIcon.Normal, QIcon.Off)
         self.menuBtn.setIcon(icon)
-        self.menuBtn.setIconSize(QSize(28, 28))
+        self.menuBtn.setIconSize(QSize(24, 24))
 
-        self.verticalLayout_3.addWidget(self.menuBtn)
+        self.horizontalLayout_8.addWidget(self.menuBtn)
 
 
         self.verticalLayout_2.addWidget(self.frame, 0, Qt.AlignTop)
@@ -81,11 +87,17 @@ class Ui_MenuWindow(object):
         self.verticalLayout_4.setContentsMargins(0, 10, 0, 10)
         self.topBtn = QPushButton(self.frame_2)
         self.topBtn.setObjectName(u"topBtn")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.topBtn.sizePolicy().hasHeightForWidth())
+        self.topBtn.setSizePolicy(sizePolicy1)
         self.topBtn.setFont(font)
+        self.topBtn.setLayoutDirection(Qt.LeftToRight)
         icon1 = QIcon()
         icon1.addFile(u":/font_awesome_solid/icons/font_awesome/solid/crown.png", QSize(), QIcon.Normal, QIcon.Off)
         self.topBtn.setIcon(icon1)
-        self.topBtn.setIconSize(QSize(28, 28))
+        self.topBtn.setIconSize(QSize(24, 24))
 
         self.verticalLayout_4.addWidget(self.topBtn)
 
@@ -95,7 +107,7 @@ class Ui_MenuWindow(object):
         icon2 = QIcon()
         icon2.addFile(u":/feather/icons/feather/list.png", QSize(), QIcon.Normal, QIcon.Off)
         self.championsBtn.setIcon(icon2)
-        self.championsBtn.setIconSize(QSize(28, 28))
+        self.championsBtn.setIconSize(QSize(24, 24))
 
         self.verticalLayout_4.addWidget(self.championsBtn)
 
@@ -120,7 +132,7 @@ class Ui_MenuWindow(object):
         icon3 = QIcon()
         icon3.addFile(u":/feather/icons/feather/search.png", QSize(), QIcon.Normal, QIcon.Off)
         self.searchBtn.setIcon(icon3)
-        self.searchBtn.setIconSize(QSize(28, 28))
+        self.searchBtn.setIconSize(QSize(24, 24))
 
         self.verticalLayout_5.addWidget(self.searchBtn)
 
@@ -130,30 +142,31 @@ class Ui_MenuWindow(object):
         icon4 = QIcon()
         icon4.addFile(u":/feather/icons/feather/user.png", QSize(), QIcon.Normal, QIcon.Off)
         self.profileBtn.setIcon(icon4)
-        self.profileBtn.setIconSize(QSize(28, 28))
+        self.profileBtn.setIconSize(QSize(24, 24))
 
         self.verticalLayout_5.addWidget(self.profileBtn)
 
         self.checkBox = QCustomCheckBox(self.frame_3)
         self.checkBox.setObjectName(u"checkBox")
         self.checkBox.setMinimumSize(QSize(50, 0))
+        self.checkBox.setMaximumSize(QSize(16777201, 16777215))
         icon5 = QIcon()
         icon5.addFile(u":/material_design/icons/material_design/mode_night.png", QSize(), QIcon.Normal, QIcon.Off)
         self.checkBox.setIcon(icon5)
-        self.checkBox.setIconSize(QSize(20, 20))
+        self.checkBox.setIconSize(QSize(16, 16))
 
-        self.verticalLayout_5.addWidget(self.checkBox, 0, Qt.AlignLeft)
-
-
-        self.verticalLayout_2.addWidget(self.frame_3)
+        self.verticalLayout_5.addWidget(self.checkBox)
 
 
-        self.verticalLayout.addWidget(self.leftMenuSubContainer, 0, Qt.AlignLeft)
+        self.verticalLayout_2.addWidget(self.frame_3, 0, Qt.AlignBottom)
+
+
+        self.verticalLayout.addWidget(self.leftMenuSubContainer)
 
 
         self.horizontalLayout.addWidget(self.leftMenuContainer, 0, Qt.AlignLeft)
 
-        self.centerMenuContainer = QWidget(self.centralwidget)
+        self.centerMenuContainer = QCustomSlideMenu(self.centralwidget)
         self.centerMenuContainer.setObjectName(u"centerMenuContainer")
         self.centerMenuContainer.setMinimumSize(QSize(200, 0))
         self.verticalLayout_6 = QVBoxLayout(self.centerMenuContainer)
@@ -179,14 +192,14 @@ class Ui_MenuWindow(object):
 
         self.horizontalLayout_2.addWidget(self.label)
 
-        self.pushButton = QPushButton(self.frame_4)
-        self.pushButton.setObjectName(u"pushButton")
+        self.closeMoreMenu = QPushButton(self.frame_4)
+        self.closeMoreMenu.setObjectName(u"closeMoreMenu")
         icon6 = QIcon()
         icon6.addFile(u":/feather/icons/feather/window_close.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon6)
-        self.pushButton.setIconSize(QSize(16, 16))
+        self.closeMoreMenu.setIcon(icon6)
+        self.closeMoreMenu.setIconSize(QSize(16, 16))
 
-        self.horizontalLayout_2.addWidget(self.pushButton, 0, Qt.AlignRight)
+        self.horizontalLayout_2.addWidget(self.closeMoreMenu, 0, Qt.AlignRight)
 
 
         self.verticalLayout_7.addWidget(self.frame_4, 0, Qt.AlignTop)
@@ -230,11 +243,11 @@ class Ui_MenuWindow(object):
 
         self.mainBodyContainer = QWidget(self.centralwidget)
         self.mainBodyContainer.setObjectName(u"mainBodyContainer")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.mainBodyContainer.sizePolicy().hasHeightForWidth())
-        self.mainBodyContainer.setSizePolicy(sizePolicy1)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.mainBodyContainer.sizePolicy().hasHeightForWidth())
+        self.mainBodyContainer.setSizePolicy(sizePolicy2)
         self.mainBodyContainer.setStyleSheet(u"")
         self.verticalLayout_10 = QVBoxLayout(self.mainBodyContainer)
         self.verticalLayout_10.setSpacing(0)
@@ -251,13 +264,13 @@ class Ui_MenuWindow(object):
         self.horizontalLayout_5 = QHBoxLayout(self.frame_6)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.label_4 = QLabel(self.frame_6)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setMaximumSize(QSize(40, 40))
-        self.label_4.setPixmap(QPixmap(u":/images/League of Legends.png"))
-        self.label_4.setScaledContents(True)
+        self.label_logo = QLabel(self.frame_6)
+        self.label_logo.setObjectName(u"label_logo")
+        self.label_logo.setMaximumSize(QSize(40, 40))
+        self.label_logo.setPixmap(QPixmap(u":/images/League of Legends.png"))
+        self.label_logo.setScaledContents(True)
 
-        self.horizontalLayout_5.addWidget(self.label_4)
+        self.horizontalLayout_5.addWidget(self.label_logo)
 
         self.label_5 = QLabel(self.frame_6)
         self.label_5.setObjectName(u"label_5")
@@ -278,29 +291,37 @@ class Ui_MenuWindow(object):
         self.horizontalLayout_4 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_3 = QPushButton(self.frame_5)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.notificationShow = QPushButton(self.frame_5)
+        self.notificationShow.setObjectName(u"notificationShow")
         icon7 = QIcon()
-        icon7.addFile(u":/feather/icons/feather/minus.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_3.setIcon(icon7)
+        icon7.addFile(u":/feather/icons/feather/bell.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.notificationShow.setIcon(icon7)
 
-        self.horizontalLayout_4.addWidget(self.pushButton_3)
+        self.horizontalLayout_4.addWidget(self.notificationShow)
 
-        self.pushButton_2 = QPushButton(self.frame_5)
-        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.minimize_window = QPushButton(self.frame_5)
+        self.minimize_window.setObjectName(u"minimize_window")
         icon8 = QIcon()
-        icon8.addFile(u":/feather/icons/feather/square.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_2.setIcon(icon8)
+        icon8.addFile(u":/feather/icons/feather/minus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.minimize_window.setIcon(icon8)
 
-        self.horizontalLayout_4.addWidget(self.pushButton_2)
+        self.horizontalLayout_4.addWidget(self.minimize_window)
 
-        self.pushButton_4 = QPushButton(self.frame_5)
-        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.restore_window = QPushButton(self.frame_5)
+        self.restore_window.setObjectName(u"restore_window")
         icon9 = QIcon()
-        icon9.addFile(u":/feather/icons/feather/x-circle.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_4.setIcon(icon9)
+        icon9.addFile(u":/feather/icons/feather/square.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.restore_window.setIcon(icon9)
 
-        self.horizontalLayout_4.addWidget(self.pushButton_4)
+        self.horizontalLayout_4.addWidget(self.restore_window)
+
+        self.close_window = QPushButton(self.frame_5)
+        self.close_window.setObjectName(u"close_window")
+        icon10 = QIcon()
+        icon10.addFile(u":/feather/icons/feather/x-circle.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.close_window.setIcon(icon10)
+
+        self.horizontalLayout_4.addWidget(self.close_window)
 
 
         self.horizontalLayout_3.addWidget(self.frame_5, 0, Qt.AlignRight)
@@ -310,13 +331,88 @@ class Ui_MenuWindow(object):
 
         self.mainBodyContent = QWidget(self.mainBodyContainer)
         self.mainBodyContent.setObjectName(u"mainBodyContent")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.mainBodyContent.sizePolicy().hasHeightForWidth())
-        self.mainBodyContent.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.mainBodyContent.sizePolicy().hasHeightForWidth())
+        self.mainBodyContent.setSizePolicy(sizePolicy3)
+        self.horizontalLayout_6 = QHBoxLayout(self.mainBodyContent)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.mainContentContainer = QWidget(self.mainBodyContent)
+        self.mainContentContainer.setObjectName(u"mainContentContainer")
+        self.verticalLayout_11 = QVBoxLayout(self.mainContentContainer)
+        self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.stackedWidget_2 = QCustomQStackedWidget(self.mainContentContainer)
+        self.stackedWidget_2.setObjectName(u"stackedWidget_2")
+        self.page_3 = QWidget()
+        self.page_3.setObjectName(u"page_3")
+        self.verticalLayout_12 = QVBoxLayout(self.page_3)
+        self.verticalLayout_12.setObjectName(u"verticalLayout_12")
+        self.label_6 = QLabel(self.page_3)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setFont(font1)
+        self.label_6.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_12.addWidget(self.label_6)
+
+        self.stackedWidget_2.addWidget(self.page_3)
+        self.page_4 = QWidget()
+        self.page_4.setObjectName(u"page_4")
+        self.verticalLayout_13 = QVBoxLayout(self.page_4)
+        self.verticalLayout_13.setObjectName(u"verticalLayout_13")
+        self.label_7 = QLabel(self.page_4)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setFont(font1)
+        self.label_7.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_13.addWidget(self.label_7)
+
+        self.stackedWidget_2.addWidget(self.page_4)
+
+        self.verticalLayout_11.addWidget(self.stackedWidget_2)
+
+
+        self.horizontalLayout_6.addWidget(self.mainContentContainer)
+
 
         self.verticalLayout_10.addWidget(self.mainBodyContent)
+
+        self.footer = QWidget(self.mainBodyContainer)
+        self.footer.setObjectName(u"footer")
+        self.verticalLayout_14 = QVBoxLayout(self.footer)
+        self.verticalLayout_14.setObjectName(u"verticalLayout_14")
+        self.notificationSlide = QCustomSlideMenu(self.footer)
+        self.notificationSlide.setObjectName(u"notificationSlide")
+        self.verticalLayout_15 = QVBoxLayout(self.notificationSlide)
+        self.verticalLayout_15.setObjectName(u"verticalLayout_15")
+        self.frame_7 = QFrame(self.notificationSlide)
+        self.frame_7.setObjectName(u"frame_7")
+        self.frame_7.setFrameShape(QFrame.StyledPanel)
+        self.frame_7.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.frame_7)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.label_8 = QLabel(self.frame_7)
+        self.label_8.setObjectName(u"label_8")
+        sizePolicy2.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
+        self.label_8.setSizePolicy(sizePolicy2)
+        self.label_8.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_7.addWidget(self.label_8)
+
+        self.closeNotification = QPushButton(self.frame_7)
+        self.closeNotification.setObjectName(u"closeNotification")
+        self.closeNotification.setIcon(icon6)
+
+        self.horizontalLayout_7.addWidget(self.closeNotification, 0, Qt.AlignRight)
+
+
+        self.verticalLayout_15.addWidget(self.frame_7)
+
+
+        self.verticalLayout_14.addWidget(self.notificationSlide)
+
+
+        self.verticalLayout_10.addWidget(self.footer)
 
 
         self.horizontalLayout.addWidget(self.mainBodyContainer)
@@ -340,28 +436,48 @@ class Ui_MenuWindow(object):
 #if QT_CONFIG(tooltip)
         self.topBtn.setToolTip(QCoreApplication.translate("MenuWindow", u"TopChampions", None))
 #endif // QT_CONFIG(tooltip)
-        self.topBtn.setText(QCoreApplication.translate("MenuWindow", u"Top Champions", None))
+        self.topBtn.setText(QCoreApplication.translate("MenuWindow", u"  Top Champions", None))
 #if QT_CONFIG(tooltip)
         self.championsBtn.setToolTip(QCoreApplication.translate("MenuWindow", u"ChampionsList", None))
 #endif // QT_CONFIG(tooltip)
-        self.championsBtn.setText(QCoreApplication.translate("MenuWindow", u"Champions List", None))
+        self.championsBtn.setText(QCoreApplication.translate("MenuWindow", u"  Champions List", None))
 #if QT_CONFIG(tooltip)
         self.searchBtn.setToolTip(QCoreApplication.translate("MenuWindow", u"SearchFriend", None))
 #endif // QT_CONFIG(tooltip)
-        self.searchBtn.setText(QCoreApplication.translate("MenuWindow", u"Search friend", None))
+        self.searchBtn.setText(QCoreApplication.translate("MenuWindow", u"  Search friend", None))
 #if QT_CONFIG(tooltip)
         self.profileBtn.setToolTip(QCoreApplication.translate("MenuWindow", u"Profile", None))
 #endif // QT_CONFIG(tooltip)
-        self.profileBtn.setText(QCoreApplication.translate("MenuWindow", u"Profile", None))
+        self.profileBtn.setText(QCoreApplication.translate("MenuWindow", u"  Profile", None))
         self.checkBox.setText(QCoreApplication.translate("MenuWindow", u"Dark Mode", None))
         self.label.setText(QCoreApplication.translate("MenuWindow", u"More Menu", None))
-        self.pushButton.setText("")
+#if QT_CONFIG(tooltip)
+        self.closeMoreMenu.setToolTip(QCoreApplication.translate("MenuWindow", u"Close Menu", None))
+#endif // QT_CONFIG(tooltip)
+        self.closeMoreMenu.setText("")
         self.label_2.setText(QCoreApplication.translate("MenuWindow", u"Search friend", None))
         self.label_3.setText(QCoreApplication.translate("MenuWindow", u"Profile", None))
-        self.label_4.setText("")
+        self.label_logo.setText("")
         self.label_5.setText(QCoreApplication.translate("MenuWindow", u"Lolify", None))
-        self.pushButton_3.setText("")
-        self.pushButton_2.setText("")
-        self.pushButton_4.setText("")
+        self.notificationShow.setText("")
+#if QT_CONFIG(tooltip)
+        self.minimize_window.setToolTip(QCoreApplication.translate("MenuWindow", u"Minimize Window", None))
+#endif // QT_CONFIG(tooltip)
+        self.minimize_window.setText("")
+#if QT_CONFIG(tooltip)
+        self.restore_window.setToolTip(QCoreApplication.translate("MenuWindow", u"Restore Window", None))
+#endif // QT_CONFIG(tooltip)
+        self.restore_window.setText("")
+#if QT_CONFIG(tooltip)
+        self.close_window.setToolTip(QCoreApplication.translate("MenuWindow", u"Close Window", None))
+#endif // QT_CONFIG(tooltip)
+        self.close_window.setText("")
+        self.label_6.setText(QCoreApplication.translate("MenuWindow", u"Top Champions", None))
+        self.label_7.setText(QCoreApplication.translate("MenuWindow", u"Champions List", None))
+        self.label_8.setText(QCoreApplication.translate("MenuWindow", u"Notification message", None))
+#if QT_CONFIG(tooltip)
+        self.closeNotification.setToolTip(QCoreApplication.translate("MenuWindow", u"Close notification", None))
+#endif // QT_CONFIG(tooltip)
+        self.closeNotification.setText("")
     # retranslateUi
 

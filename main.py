@@ -9,6 +9,7 @@ from src.ui_login_interface import *
 from src.ui_app_interface import *
 
 ########################################################################
+from champions import fetch_champions
 
 ########################################################################
 # IMPORT Custom widgets
@@ -81,6 +82,23 @@ class MainWindow(QMainWindow):
         # QAppSettings.updateAppSettings(self)
 
     def login(self):
+        # Logowanie użytkownika
+        self.fetch_and_display_champions()
+
+    def fetch_and_display_champions(self):
+        # Pobranie i wyświetlenie danych bohaterów
+        champions_data = fetch_champions()
+        if champions_data:
+            print("Pobrane dane bohaterów:")
+            for champion in champions_data:
+                print(champion)
+            # Jeśli pobranie danych powiodło się, przełącz na interfejs aplikacji
+            self.switch_to_app_ui()
+        else:
+            print("Nie udało się pobrać danych bohaterów.")
+
+    def switch_to_app_ui(self):
+        # Przełączenie na interfejs aplikacji po udanym zalogowaniu
         self.hide()
         self.ui = Ui_MenuWindow()
         self.ui.setupUi(self)

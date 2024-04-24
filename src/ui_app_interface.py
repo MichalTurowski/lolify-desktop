@@ -15,9 +15,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QFrame, QHBoxLayout, QLabel,
-    QMainWindow, QPushButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
+    QLabel, QMainWindow, QPushButton, QScrollArea,
+    QSizePolicy, QSpacerItem, QStackedWidget, QVBoxLayout,
+    QWidget)
 
 from Custom_Widgets.QCustomCheckBox import QCustomCheckBox
 from Custom_Widgets.QCustomQStackedWidget import QCustomQStackedWidget
@@ -348,12 +349,80 @@ class Ui_MenuWindow(object):
         self.page_3.setObjectName(u"page_3")
         self.verticalLayout_12 = QVBoxLayout(self.page_3)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.label_6 = QLabel(self.page_3)
-        self.label_6.setObjectName(u"label_6")
-        self.label_6.setFont(font1)
-        self.label_6.setAlignment(Qt.AlignCenter)
+        self.scrollArea = QScrollArea(self.page_3)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 475, 299))
+        self.gridLayout = QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.paginationButtons = QWidget(self.scrollAreaWidgetContents)
+        self.paginationButtons.setObjectName(u"paginationButtons")
+        self.paginationButtons.setMaximumSize(QSize(494, 215))
+        self.paginationButtons.setStyleSheet(u"QPushButton {\n"
+"    text-align: center;\n"
+"}\n"
+"")
+        self.horizontalLayout_9 = QHBoxLayout(self.paginationButtons)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.pushButton = QPushButton(self.paginationButtons)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setMaximumSize(QSize(40, 40))
+        font3 = QFont()
+        font3.setHintingPreference(QFont.PreferDefaultHinting)
+        self.pushButton.setFont(font3)
 
-        self.verticalLayout_12.addWidget(self.label_6)
+        self.horizontalLayout_9.addWidget(self.pushButton)
+
+        self.pushButton_2 = QPushButton(self.paginationButtons)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setMaximumSize(QSize(40, 40))
+
+        self.horizontalLayout_9.addWidget(self.pushButton_2)
+
+        self.pushButton_3 = QPushButton(self.paginationButtons)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setMaximumSize(QSize(60, 40))
+
+        self.horizontalLayout_9.addWidget(self.pushButton_3)
+
+        self.pushButton_4 = QPushButton(self.paginationButtons)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.pushButton_4.setMaximumSize(QSize(40, 40))
+
+        self.horizontalLayout_9.addWidget(self.pushButton_4)
+
+        self.pushButton_5 = QPushButton(self.paginationButtons)
+        self.pushButton_5.setObjectName(u"pushButton_5")
+        self.pushButton_5.setMaximumSize(QSize(40, 40))
+        self.pushButton_5.setStyleSheet(u"QPushButton {\n"
+"    text-align: center;\n"
+"}\n"
+"")
+
+        self.horizontalLayout_9.addWidget(self.pushButton_5)
+
+        self.pushButton_6 = QPushButton(self.paginationButtons)
+        self.pushButton_6.setObjectName(u"pushButton_6")
+        self.pushButton_6.setMaximumSize(QSize(60, 40))
+
+        self.horizontalLayout_9.addWidget(self.pushButton_6)
+
+
+        self.gridLayout.addWidget(self.paginationButtons, 0, 0, 1, 1, Qt.AlignHCenter|Qt.AlignTop)
+
+        self.champions = QWidget(self.scrollAreaWidgetContents)
+        self.champions.setObjectName(u"champions")
+        self.champions.setMinimumSize(QSize(0, 233))
+        self.gridLayout_2 = QGridLayout(self.champions)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+
+        self.gridLayout.addWidget(self.champions, 1, 0, 1, 1)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.verticalLayout_12.addWidget(self.scrollArea)
 
         self.stackedWidget_2.addWidget(self.page_3)
         self.page_4 = QWidget()
@@ -472,7 +541,12 @@ class Ui_MenuWindow(object):
         self.close_window.setToolTip(QCoreApplication.translate("MenuWindow", u"Close Window", None))
 #endif // QT_CONFIG(tooltip)
         self.close_window.setText("")
-        self.label_6.setText(QCoreApplication.translate("MenuWindow", u"Top Champions", None))
+        self.pushButton.setText(QCoreApplication.translate("MenuWindow", u"ALL", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MenuWindow", u"TOP", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MenuWindow", u"JUNGLE", None))
+        self.pushButton_4.setText(QCoreApplication.translate("MenuWindow", u"MID", None))
+        self.pushButton_5.setText(QCoreApplication.translate("MenuWindow", u"ADC", None))
+        self.pushButton_6.setText(QCoreApplication.translate("MenuWindow", u"SUPPORT", None))
         self.label_7.setText(QCoreApplication.translate("MenuWindow", u"Champions List", None))
         self.label_8.setText(QCoreApplication.translate("MenuWindow", u"Notification message", None))
 #if QT_CONFIG(tooltip)

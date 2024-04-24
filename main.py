@@ -10,6 +10,7 @@ from src.ui_app_interface import *
 
 ########################################################################
 from champions import fetch_champions
+from ChampionCard import ChampionCard
 
 ########################################################################
 # IMPORT Custom widgets
@@ -84,11 +85,14 @@ class MainWindow(QMainWindow):
     def login(self):
         # Logowanie użytkownika
         self.fetch_and_display_champions()
+        # self.switch_to_app_ui()
 
     def fetch_and_display_champions(self):
         # Pobranie i wyświetlenie danych bohaterów
         champions_data = fetch_champions()
         if champions_data:
+            total_champions = len(champions_data)  # Zlicz liczbę wszystkich bohaterów
+            total_champions_label = QLabel(f"Total champions: {total_champions}")
             print("Pobrane dane bohaterów:")
             for champion in champions_data:
                 print(champion)
@@ -96,6 +100,16 @@ class MainWindow(QMainWindow):
             self.switch_to_app_ui()
         else:
             print("Nie udało się pobrać danych bohaterów.")
+
+    def createNewWidgets(self, rowNumber, columNumber, champion_data):
+        newName = "frame" + str(rowNumber) + "_" + str(columNumber)
+        print(newName)
+        champion_card = ChampionCard(champion_data, self.ui.champions)
+        champion_card.champion_clicked.connect(self.handle_champion_clicked)
+        self.ui.gridLayout_2.addWidget(champion_card, rowNumber, columNumber, 1, 1)
+
+    def handle_champion_clicked(self, champion_id):
+        print(f"Champion clicked! Champion ID: {champion_id}")
 
     def switch_to_app_ui(self):
         # Przełączenie na interfejs aplikacji po udanym zalogowaniu
@@ -105,6 +119,22 @@ class MainWindow(QMainWindow):
         loadJsonStyle(self, self.ui, jsonFiles={"json-styles/app_style.json"})
         QAppSettings.updateAppSettings(self)
         self.show()
+        champions_data = fetch_champions()
+        if champions_data:
+            # Zlicz liczbę bohaterów
+            total_champions = len(champions_data)
+
+            # Oblicz liczbę wierszy i kolumn
+            num_rows = (total_champions + 4) // 5  # 5 kolumn na wiersz
+            num_columns = 5
+
+            # Pętla do tworzenia kontenerów na bohaterów
+            for x in range(num_rows):
+                for y in range(num_columns):
+                    champion_index = x * num_columns + y
+                    if champion_index < total_champions:
+                        champion_data = champions_data[champion_index]
+                        self.createNewWidgets(x, y, champion_data)
         self.ui.searchBtn.clicked.connect(
             lambda: self.ui.centerMenuContainer.expandMenu()
         )

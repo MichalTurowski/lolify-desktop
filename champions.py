@@ -3,7 +3,7 @@ from PySide6.QtWidgets import QTableWidgetItem
 
 
 def fetch_champions():
-    url = "https://lolify.fly.dev/api/champion/"
+    url = "https://lolify.fly.dev/api/champion"
     try:
         response = requests.get(url)
         response.raise_for_status()  # Sprawdzenie statusu odpowiedzi

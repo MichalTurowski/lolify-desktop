@@ -309,7 +309,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QCustomCheckBox" name="checkBox">
+              <widget class="QCustomCheckBox" name="checkBox1">
                <property name="minimumSize">
                 <size>
                  <width>50</width>

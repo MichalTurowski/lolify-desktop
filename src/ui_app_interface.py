@@ -147,16 +147,16 @@ class Ui_MenuWindow(object):
 
         self.verticalLayout_5.addWidget(self.profileBtn)
 
-        self.checkBox = QCustomCheckBox(self.frame_3)
-        self.checkBox.setObjectName(u"checkBox")
-        self.checkBox.setMinimumSize(QSize(50, 0))
-        self.checkBox.setMaximumSize(QSize(16777201, 16777215))
+        self.checkBox1 = QCustomCheckBox(self.frame_3)
+        self.checkBox1.setObjectName(u"checkBox1")
+        self.checkBox1.setMinimumSize(QSize(50, 0))
+        self.checkBox1.setMaximumSize(QSize(16777201, 16777215))
         icon5 = QIcon()
         icon5.addFile(u":/material_design/icons/material_design/mode_night.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.checkBox.setIcon(icon5)
-        self.checkBox.setIconSize(QSize(16, 16))
+        self.checkBox1.setIcon(icon5)
+        self.checkBox1.setIconSize(QSize(16, 16))
 
-        self.verticalLayout_5.addWidget(self.checkBox)
+        self.verticalLayout_5.addWidget(self.checkBox1)
 
 
         self.verticalLayout_2.addWidget(self.frame_3, 0, Qt.AlignBottom)
@@ -518,7 +518,7 @@ class Ui_MenuWindow(object):
         self.profileBtn.setToolTip(QCoreApplication.translate("MenuWindow", u"Profile", None))
 #endif // QT_CONFIG(tooltip)
         self.profileBtn.setText(QCoreApplication.translate("MenuWindow", u"  Profile", None))
-        self.checkBox.setText(QCoreApplication.translate("MenuWindow", u"Dark Mode", None))
+        self.checkBox1.setText(QCoreApplication.translate("MenuWindow", u"Dark Mode", None))
         self.label.setText(QCoreApplication.translate("MenuWindow", u"More Menu", None))
 #if QT_CONFIG(tooltip)
         self.closeMoreMenu.setToolTip(QCoreApplication.translate("MenuWindow", u"Close Menu", None))

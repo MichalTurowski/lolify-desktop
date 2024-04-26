@@ -47,7 +47,7 @@
   ],
   "QCustomCheckBox": [
     {
-      "name": "checkBox",
+      "name": "checkBox1",
       "icon": "Qss/icons/icons/material_design/mode_night.png"
     }
   ],

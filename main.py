@@ -119,6 +119,7 @@ class MainWindow(QMainWindow):
         loadJsonStyle(self, self.ui, jsonFiles={"json-styles/app_style.json"})
         QAppSettings.updateAppSettings(self)
         self.show()
+        self.ui.checkBox1.stateChanged.connect(lambda: self.darkMode())
         champions_data = fetch_champions()
         if champions_data:
             # Zlicz liczbę bohaterów

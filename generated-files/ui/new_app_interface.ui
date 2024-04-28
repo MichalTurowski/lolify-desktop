@@ -309,7 +309,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QCustomCheckBox" name="checkBox1">
+              <widget class="QCustomCheckBox" name="checkBox_app">
                <property name="minimumSize">
                 <size>
                  <width>50</width>
@@ -594,6 +594,17 @@
              <property name="bottomMargin">
               <number>0</number>
              </property>
+             <item>
+              <widget class="QPushButton" name="logoutBtn">
+               <property name="text">
+                <string />
+               </property>
+               <property name="icon">
+                <iconset resource="../Qss/icons/_icons.qrc">
+                 <normaloff>:/feather/icons/feather/log-out.png</normaloff>:/feather/icons/feather/log-out.png</iconset>
+               </property>
+              </widget>
+             </item>
              <item>
               <widget class="QPushButton" name="notificationShow">
                <property name="text">

@@ -94,7 +94,7 @@
 	}],
 	"QCustomCheckBox":[
 		{
-			"name":"checkBox1",
+			"name":"checkBox_app",
 			"bgColor":"#DCDCDC",
 			"circleColor":"#339999",
 			"activeColor":"#99CCCC",

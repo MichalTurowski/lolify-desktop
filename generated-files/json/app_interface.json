@@ -25,6 +25,10 @@
       "icon": "Qss/icons/icons/feather/window_close.png"
     },
     {
+      "name": "logoutBtn",
+      "icon": "Qss/icons/icons/feather/log-out.png"
+    },
+    {
       "name": "notificationShow",
       "icon": "Qss/icons/icons/feather/bell.png"
     },
@@ -47,7 +51,7 @@
   ],
   "QCustomCheckBox": [
     {
-      "name": "checkBox1",
+      "name": "checkBox_app",
       "icon": "Qss/icons/icons/material_design/mode_night.png"
     }
   ],

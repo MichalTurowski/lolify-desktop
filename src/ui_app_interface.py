@@ -147,16 +147,16 @@ class Ui_MenuWindow(object):
 
         self.verticalLayout_5.addWidget(self.profileBtn)
 
-        self.checkBox1 = QCustomCheckBox(self.frame_3)
-        self.checkBox1.setObjectName(u"checkBox1")
-        self.checkBox1.setMinimumSize(QSize(50, 0))
-        self.checkBox1.setMaximumSize(QSize(16777201, 16777215))
+        self.checkBox_app = QCustomCheckBox(self.frame_3)
+        self.checkBox_app.setObjectName(u"checkBox_app")
+        self.checkBox_app.setMinimumSize(QSize(50, 0))
+        self.checkBox_app.setMaximumSize(QSize(16777201, 16777215))
         icon5 = QIcon()
         icon5.addFile(u":/material_design/icons/material_design/mode_night.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.checkBox1.setIcon(icon5)
-        self.checkBox1.setIconSize(QSize(16, 16))
+        self.checkBox_app.setIcon(icon5)
+        self.checkBox_app.setIconSize(QSize(16, 16))
 
-        self.verticalLayout_5.addWidget(self.checkBox1)
+        self.verticalLayout_5.addWidget(self.checkBox_app)
 
 
         self.verticalLayout_2.addWidget(self.frame_3, 0, Qt.AlignBottom)
@@ -292,35 +292,43 @@ class Ui_MenuWindow(object):
         self.horizontalLayout_4 = QHBoxLayout(self.frame_5)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.logoutBtn = QPushButton(self.frame_5)
+        self.logoutBtn.setObjectName(u"logoutBtn")
+        icon7 = QIcon()
+        icon7.addFile(u":/feather/icons/feather/log-out.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.logoutBtn.setIcon(icon7)
+
+        self.horizontalLayout_4.addWidget(self.logoutBtn)
+
         self.notificationShow = QPushButton(self.frame_5)
         self.notificationShow.setObjectName(u"notificationShow")
-        icon7 = QIcon()
-        icon7.addFile(u":/feather/icons/feather/bell.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.notificationShow.setIcon(icon7)
+        icon8 = QIcon()
+        icon8.addFile(u":/feather/icons/feather/bell.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.notificationShow.setIcon(icon8)
 
         self.horizontalLayout_4.addWidget(self.notificationShow)
 
         self.minimize_window = QPushButton(self.frame_5)
         self.minimize_window.setObjectName(u"minimize_window")
-        icon8 = QIcon()
-        icon8.addFile(u":/feather/icons/feather/minus.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.minimize_window.setIcon(icon8)
+        icon9 = QIcon()
+        icon9.addFile(u":/feather/icons/feather/minus.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.minimize_window.setIcon(icon9)
 
         self.horizontalLayout_4.addWidget(self.minimize_window)
 
         self.restore_window = QPushButton(self.frame_5)
         self.restore_window.setObjectName(u"restore_window")
-        icon9 = QIcon()
-        icon9.addFile(u":/feather/icons/feather/square.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.restore_window.setIcon(icon9)
+        icon10 = QIcon()
+        icon10.addFile(u":/feather/icons/feather/square.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.restore_window.setIcon(icon10)
 
         self.horizontalLayout_4.addWidget(self.restore_window)
 
         self.close_window = QPushButton(self.frame_5)
         self.close_window.setObjectName(u"close_window")
-        icon10 = QIcon()
-        icon10.addFile(u":/feather/icons/feather/x-circle.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.close_window.setIcon(icon10)
+        icon11 = QIcon()
+        icon11.addFile(u":/feather/icons/feather/x-circle.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.close_window.setIcon(icon11)
 
         self.horizontalLayout_4.addWidget(self.close_window)
 
@@ -518,7 +526,7 @@ class Ui_MenuWindow(object):
         self.profileBtn.setToolTip(QCoreApplication.translate("MenuWindow", u"Profile", None))
 #endif // QT_CONFIG(tooltip)
         self.profileBtn.setText(QCoreApplication.translate("MenuWindow", u"  Profile", None))
-        self.checkBox1.setText(QCoreApplication.translate("MenuWindow", u"Dark Mode", None))
+        self.checkBox_app.setText(QCoreApplication.translate("MenuWindow", u"Dark Mode", None))
         self.label.setText(QCoreApplication.translate("MenuWindow", u"More Menu", None))
 #if QT_CONFIG(tooltip)
         self.closeMoreMenu.setToolTip(QCoreApplication.translate("MenuWindow", u"Close Menu", None))
@@ -528,6 +536,7 @@ class Ui_MenuWindow(object):
         self.label_3.setText(QCoreApplication.translate("MenuWindow", u"Profile", None))
         self.label_logo.setText("")
         self.label_5.setText(QCoreApplication.translate("MenuWindow", u"Lolify", None))
+        self.logoutBtn.setText("")
         self.notificationShow.setText("")
 #if QT_CONFIG(tooltip)
         self.minimize_window.setToolTip(QCoreApplication.translate("MenuWindow", u"Minimize Window", None))

@@ -1,6 +1,7 @@
 import sys
 import requests
 import keyring
+import time
 
 from dotenv import load_dotenv
 
@@ -31,7 +32,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.ui.signInBtn.clicked.connect(
             # lambda: self.showNotification("Sign in button clicked!")
-            lambda: self.login()
+            lambda: self.login_or_refresh()
         )
         self.ui.signUpBtn.clicked.connect(
             # lambda: self.showNotification("Sign up button clicked!")
@@ -56,6 +57,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             settings.setValue("THEME", "Dark-Blue")
 
         CompileStyleSheet.applyCompiledSass(self)
+
+    def login_or_refresh(self):
+        access_token = keyring.get_password("lolify", "token")
+        if access_token:
+            self.check_token_expiration()
+        else:
+            self.login()
 
     def login(self):
         email = self.ui.lineEdit.text()
@@ -115,3 +123,29 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             print("Failed to register. Status code:", response.status_code)
             self.showNotification("Something went wrong.")
+
+    def check_token_expiration(self):
+        token_expiration_time = keyring.get_password("lolify", "token_expiration")
+        if token_expiration_time:
+            current_time = int(time.time())
+            if current_time >= int(token_expiration_time):
+                self.refresh_token()
+
+    def refresh_token(self):
+        access_token = keyring.get_password("lolify", "token")
+        refresh_token = keyring.get_password("lolify", "refresh_token")
+        if access_token and refresh_token:
+            headers = {
+                "Authorization": f"Bearer {refresh_token}",
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+            response = requests.post(f"{API_URL}/refresh", headers=headers)
+            if response.status_code == 200:
+                new_token = response.json()["access_token"]
+                keyring.set_password("lolify", "token", new_token)
+                print("Token refreshed successfully.")
+            else:
+                print("Failed to refresh token.")
+        else:
+            print("No token found or refresh token found. You are not logged in.")

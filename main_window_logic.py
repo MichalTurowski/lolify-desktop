@@ -2,6 +2,7 @@ import sys
 import requests
 import keyring
 import time
+import os
 
 from dotenv import load_dotenv
 
@@ -14,7 +15,7 @@ from app_window_logic import AppWindowLogic
 from User import User
 
 load_dotenv()
-API_URL = "https://lolify.fly.dev/api"
+API_URL = os.getenv("API_URL")
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -61,7 +62,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def login_or_refresh(self):
         access_token = keyring.get_password("lolify", "token")
         if access_token:
+            print("Access token:", access_token)
             self.check_token_expiration()
+            self.close()
+            app_logic = AppWindowLogic()
         else:
             self.login()
 
@@ -94,6 +98,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.showNotification("Something went wrong.")
 
     def register(self):
+        name = self.ui.lineEdit_6.text()
         email = self.ui.lineEdit_3.text()
         password = self.ui.lineEdit_4.text()
         confirm_password = self.ui.lineEdit_5.text()
@@ -104,12 +109,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.showNotification("Passwords do not match.")
             return
 
-        user = User(email, password)
+        user = User(email, password, name)
 
         payload = {
             "email": user.email,
             "password": user.password,
             "password_confirmation": user.password,
+            "name": user.name,
         }
 
         response = requests.post(f"{API_URL}/register", json=payload)

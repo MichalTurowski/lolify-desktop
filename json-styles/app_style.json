@@ -55,6 +55,31 @@
     ],
     "QCustomQStackedWidget":[
 		{
+			"name":"stackedWidget",
+			"navigation":[
+				{
+					"navigationButtons":[
+						{
+                            "profileBtn": "page_2",
+                            "searchBtn": "page"
+						}
+					]
+				}
+			],
+            "transitionAnimation":[
+				{
+					"slide":[
+						{
+							"active": true,
+							"duration":1000,
+                            "direction": "horizontal",
+							"easingCurve": "OutBack"
+						}
+					]
+				}
+			]
+		},
+		{
 			"name":"stackedWidget_2",
 			"navigation":[
 				{

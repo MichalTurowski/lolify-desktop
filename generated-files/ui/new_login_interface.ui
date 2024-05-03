@@ -360,7 +360,7 @@
                  <item>
                   <widget class="QLineEdit" name="lineEdit">
                    <property name="placeholderText">
-                    <string>Username</string>
+                    <string>E-mail</string>
                    </property>
                   </widget>
                  </item>
@@ -426,9 +426,16 @@
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_10">
                  <item>
-                  <widget class="QLineEdit" name="lineEdit_3">
+                  <widget class="QLineEdit" name="lineEdit_6">
                    <property name="placeholderText">
                     <string>Username</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="lineEdit_3">
+                   <property name="placeholderText">
+                    <string>E-mail</string>
                    </property>
                   </widget>
                  </item>

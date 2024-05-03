@@ -1,15 +1,18 @@
 import sys
 import requests
 import keyring
+import os
 
 from src.ui_login_interface import *
 from src.ui_app_interface import *
 
 from Custom_Widgets import *
 from Custom_Widgets.QAppSettings import QAppSettings
+from dotenv import load_dotenv
 
+load_dotenv()
 
-API_URL = "https://lolify.fly.dev/api"
+API_URL = os.getenv("API_URL")
 
 
 class AppWindowLogic(QMainWindow, Ui_MenuWindow):

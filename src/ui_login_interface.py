@@ -255,6 +255,11 @@ class Ui_MainWindow(object):
         self.frame_6.setFrameShadow(QFrame.Raised)
         self.verticalLayout_10 = QVBoxLayout(self.frame_6)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
+        self.lineEdit_6 = QLineEdit(self.frame_6)
+        self.lineEdit_6.setObjectName(u"lineEdit_6")
+
+        self.verticalLayout_10.addWidget(self.lineEdit_6)
+
         self.lineEdit_3 = QLineEdit(self.frame_6)
         self.lineEdit_3.setObjectName(u"lineEdit_3")
 
@@ -337,11 +342,12 @@ class Ui_MainWindow(object):
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Already registered? Click below to login", None))
         self.to_login.setText(QCoreApplication.translate("MainWindow", u"Login", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:700;\">Sing In</span></p></body></html>", None))
-        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Username", None))
+        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"E-mail", None))
         self.lineEdit_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.signInBtn.setText(QCoreApplication.translate("MainWindow", u"Sign In", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:700;\">Sing Up</span></p></body></html>", None))
-        self.lineEdit_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Username", None))
+        self.lineEdit_6.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Username", None))
+        self.lineEdit_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"E-mail", None))
         self.lineEdit_4.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Password", None))
         self.lineEdit_5.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Confirm Password", None))
         self.signUpBtn.setText(QCoreApplication.translate("MainWindow", u"Sign Up", None))

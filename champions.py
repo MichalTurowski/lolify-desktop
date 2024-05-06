@@ -1,11 +1,16 @@
 import requests
+import os
 from PySide6.QtWidgets import QTableWidgetItem
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def fetch_champions():
-    url = "https://lolify.fly.dev/api/champion"
+    API_URL = os.getenv("API_URL")
+    # url = "https://lolify.wheelwallet.cloud/api/champion"
     try:
-        response = requests.get(url)
+        response = requests.get(f"{API_URL}/champion")
         response.raise_for_status()  # Sprawdzenie statusu odpowiedzi
         champions = response.json()  # Pobranie danych w formacie JSON
         return champions

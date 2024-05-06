@@ -60,7 +60,6 @@
 				{
 					"navigationButtons":[
 						{
-                            "profileBtn": "page_2",
                             "searchBtn": "page"
 						}
 					]
@@ -85,15 +84,16 @@
 				{
 					"navigationButtons":[
 						{
-                            "topBtn": "page_3",
-                            "championsBtn": "page_4"
+                            "topBtn": "page_4",
+                            "championsBtn": "page_3",
+                            "profileBtn": "page_5"
 						}
 					]
 				}
 			],
             "transitionAnimation":[
 				{
-					"slide":[
+					"fade":[
 						{
 							"active": true,
 							"duration":1000,

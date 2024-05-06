@@ -16,9 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
-    QLabel, QMainWindow, QPushButton, QScrollArea,
-    QSizePolicy, QSpacerItem, QStackedWidget, QVBoxLayout,
-    QWidget)
+    QHeaderView, QLabel, QMainWindow, QPushButton,
+    QScrollArea, QSizePolicy, QSpacerItem, QStackedWidget,
+    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
 from Custom_Widgets.QCustomCheckBox import QCustomCheckBox
 from Custom_Widgets.QCustomQStackedWidget import QCustomQStackedWidget
@@ -433,6 +433,96 @@ class Ui_MenuWindow(object):
         self.verticalLayout_12.addWidget(self.scrollArea)
 
         self.stackedWidget_2.addWidget(self.page_3)
+        self.page_5 = QWidget()
+        self.page_5.setObjectName(u"page_5")
+        self.verticalLayout_3 = QVBoxLayout(self.page_5)
+        self.verticalLayout_3.setObjectName(u"verticalLayout_3")
+        self.frame_8 = QFrame(self.page_5)
+        self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setFrameShape(QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_16 = QVBoxLayout(self.frame_8)
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.label_4 = QLabel(self.frame_8)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setFont(font2)
+
+        self.verticalLayout_16.addWidget(self.label_4)
+
+        self.label_6 = QLabel(self.frame_8)
+        self.label_6.setObjectName(u"label_6")
+        font4 = QFont()
+        font4.setBold(True)
+        self.label_6.setFont(font4)
+
+        self.verticalLayout_16.addWidget(self.label_6)
+
+        self.summonerName = QLabel(self.frame_8)
+        self.summonerName.setObjectName(u"summonerName")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy4.setHorizontalStretch(200)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.summonerName.sizePolicy().hasHeightForWidth())
+        self.summonerName.setSizePolicy(sizePolicy4)
+        self.summonerName.setWordWrap(True)
+
+        self.verticalLayout_16.addWidget(self.summonerName)
+
+        self.label_10 = QLabel(self.frame_8)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setFont(font4)
+
+        self.verticalLayout_16.addWidget(self.label_10)
+
+        self.summonerEmail = QLabel(self.frame_8)
+        self.summonerEmail.setObjectName(u"summonerEmail")
+        sizePolicy4.setHeightForWidth(self.summonerEmail.sizePolicy().hasHeightForWidth())
+        self.summonerEmail.setSizePolicy(sizePolicy4)
+        self.summonerEmail.setWordWrap(True)
+
+        self.verticalLayout_16.addWidget(self.summonerEmail)
+
+
+        self.verticalLayout_3.addWidget(self.frame_8)
+
+        self.frame_9 = QFrame(self.page_5)
+        self.frame_9.setObjectName(u"frame_9")
+        self.frame_9.setFrameShape(QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_3.addWidget(self.frame_9)
+
+        self.frame_10 = QFrame(self.page_5)
+        self.frame_10.setObjectName(u"frame_10")
+        self.frame_10.setEnabled(True)
+        self.frame_10.setFrameShape(QFrame.StyledPanel)
+        self.frame_10.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_17 = QVBoxLayout(self.frame_10)
+        self.verticalLayout_17.setObjectName(u"verticalLayout_17")
+        self.line = QFrame(self.frame_10)
+        self.line.setObjectName(u"line")
+        self.line.setFont(font2)
+        self.line.setFrameShape(QFrame.HLine)
+        self.line.setFrameShadow(QFrame.Sunken)
+
+        self.verticalLayout_17.addWidget(self.line)
+
+        self.tableWidget = QTableWidget(self.frame_10)
+        if (self.tableWidget.columnCount() < 2):
+            self.tableWidget.setColumnCount(2)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setStyleSheet(u"")
+
+        self.verticalLayout_17.addWidget(self.tableWidget)
+
+
+        self.verticalLayout_3.addWidget(self.frame_10)
+
+        self.stackedWidget_2.addWidget(self.page_5)
         self.page_4 = QWidget()
         self.page_4.setObjectName(u"page_4")
         self.verticalLayout_13 = QVBoxLayout(self.page_4)
@@ -499,6 +589,7 @@ class Ui_MenuWindow(object):
         self.retranslateUi(MenuWindow)
 
         self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget_2.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MenuWindow)
@@ -556,6 +647,15 @@ class Ui_MenuWindow(object):
         self.pushButton_4.setText(QCoreApplication.translate("MenuWindow", u"MID", None))
         self.pushButton_5.setText(QCoreApplication.translate("MenuWindow", u"ADC", None))
         self.pushButton_6.setText(QCoreApplication.translate("MenuWindow", u"SUPPORT", None))
+        self.label_4.setText(QCoreApplication.translate("MenuWindow", u"Profile", None))
+        self.label_6.setText(QCoreApplication.translate("MenuWindow", u"Summoner:", None))
+        self.summonerName.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))
+        self.label_10.setText(QCoreApplication.translate("MenuWindow", u"E-mail: ", None))
+        self.summonerEmail.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MenuWindow", u"Logs", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MenuWindow", u"Date", None));
         self.label_7.setText(QCoreApplication.translate("MenuWindow", u"Champions List", None))
         self.label_8.setText(QCoreApplication.translate("MenuWindow", u"Notification message", None))
 #if QT_CONFIG(tooltip)

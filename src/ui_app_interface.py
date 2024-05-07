@@ -28,6 +28,7 @@ class Ui_MenuWindow(object):
         if not MenuWindow.objectName():
             MenuWindow.setObjectName(u"MenuWindow")
         MenuWindow.resize(800, 469)
+        MenuWindow.setMinimumSize(QSize(0, 0))
         MenuWindow.setStyleSheet(u"QPushButton{\n"
 "	text-align: left;\n"
 "}")
@@ -527,12 +528,51 @@ class Ui_MenuWindow(object):
         self.page_4.setObjectName(u"page_4")
         self.verticalLayout_13 = QVBoxLayout(self.page_4)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.label_7 = QLabel(self.page_4)
-        self.label_7.setObjectName(u"label_7")
-        self.label_7.setFont(font1)
-        self.label_7.setAlignment(Qt.AlignCenter)
+        self.scrollArea_2 = QScrollArea(self.page_4)
+        self.scrollArea_2.setObjectName(u"scrollArea_2")
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_2 = QWidget()
+        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 475, 313))
+        self.gridLayout_3 = QGridLayout(self.scrollAreaWidgetContents_2)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.champions_2 = QWidget(self.scrollAreaWidgetContents_2)
+        self.champions_2.setObjectName(u"champions_2")
+        self.champions_2.setMinimumSize(QSize(0, 233))
+        self.gridLayout_4 = QGridLayout(self.champions_2)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
 
-        self.verticalLayout_13.addWidget(self.label_7)
+        self.gridLayout_3.addWidget(self.champions_2, 1, 0, 1, 1)
+
+        self.topChampions = QWidget(self.scrollAreaWidgetContents_2)
+        self.topChampions.setObjectName(u"topChampions")
+        self.topChampions.setMinimumSize(QSize(0, 0))
+        self.topChampions.setMaximumSize(QSize(494, 215))
+        self.topChampions.setFont(font2)
+        self.horizontalLayout_10 = QHBoxLayout(self.topChampions)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.label_7 = QLabel(self.topChampions)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setFont(font2)
+
+        self.horizontalLayout_10.addWidget(self.label_7)
+
+        self.label_9 = QLabel(self.topChampions)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setMinimumSize(QSize(38, 38))
+        self.label_9.setMaximumSize(QSize(40, 40))
+        self.label_9.setStyleSheet(u"")
+        self.label_9.setPixmap(QPixmap(u":/font_awesome_solid/icons/font_awesome/solid/medal.png"))
+        self.label_9.setScaledContents(True)
+
+        self.horizontalLayout_10.addWidget(self.label_9)
+
+
+        self.gridLayout_3.addWidget(self.topChampions, 0, 0, 1, 1, Qt.AlignHCenter|Qt.AlignTop)
+
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+
+        self.verticalLayout_13.addWidget(self.scrollArea_2)
 
         self.stackedWidget_2.addWidget(self.page_4)
 
@@ -589,7 +629,7 @@ class Ui_MenuWindow(object):
         self.retranslateUi(MenuWindow)
 
         self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_2.setCurrentIndex(0)
+        self.stackedWidget_2.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MenuWindow)
@@ -656,7 +696,8 @@ class Ui_MenuWindow(object):
         ___qtablewidgetitem.setText(QCoreApplication.translate("MenuWindow", u"Logs", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MenuWindow", u"Date", None));
-        self.label_7.setText(QCoreApplication.translate("MenuWindow", u"Champions List", None))
+        self.label_7.setText(QCoreApplication.translate("MenuWindow", u"Top Champions", None))
+        self.label_9.setText("")
         self.label_8.setText(QCoreApplication.translate("MenuWindow", u"Notification message", None))
 #if QT_CONFIG(tooltip)
         self.closeNotification.setToolTip(QCoreApplication.translate("MenuWindow", u"Close notification", None))

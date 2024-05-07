@@ -9,7 +9,8 @@ from src.ui_app_interface import *
 from Custom_Widgets import *
 from Custom_Widgets.QAppSettings import QAppSettings
 from ChampionCard import ChampionCard
-from champions import fetch_champions
+from TopChampionCard import TopChampionCard
+from champions import fetch_champions, fetch_top_champions
 from dotenv import load_dotenv
 from datetime import datetime
 
@@ -20,6 +21,7 @@ API_URL = os.getenv("API_URL")
 
 class AppWindowLogic(QMainWindow, Ui_MenuWindow):
     champions_data = []
+    top_champions_data = []
 
     def __init__(self):
         QMainWindow.__init__(self)
@@ -33,6 +35,7 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         self.ui.notificationSlide.collapseMenu()
         self.show()
         self.ui.championsBtn.clicked.connect(lambda: self.switch_to_app_ui())
+        self.ui.topBtn.clicked.connect(lambda: self.update_top_champions_ui())
         self.ui.checkBox_app.stateChanged.connect(lambda: self.darkMode())
         self.ui.notificationShow.clicked.connect(
             lambda: self.showNotification("Notification show button clicked!")
@@ -41,6 +44,8 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         self.ui.profileBtn.clicked.connect(lambda: self.profile())
         if not AppWindowLogic.champions_data:
             AppWindowLogic.champions_data = fetch_champions()
+        if not AppWindowLogic.top_champions_data:
+            AppWindowLogic.top_champions_data = fetch_top_champions()
         self.ui.allBtn.clicked.connect(lambda: self.filter_champions(None))
         self.ui.topBtn_2.clicked.connect(lambda: self.filter_champions(1))
         self.ui.jungleBtn.clicked.connect(lambda: self.filter_champions(2))
@@ -140,6 +145,31 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
                 if champion_index < total_champions:
                     champion_data = champions_data[champion_index]
                     self.createNewWidgets(x, y, champion_data)
+
+    def update_top_champions_ui(self):
+        top_champions_data = AppWindowLogic.top_champions_data
+
+        # Zlicz liczbę topowych championów
+        total_top_champions = len(top_champions_data)
+
+        # Oblicz liczbę wierszy i kolumn
+        num_rows = 1
+        num_columns = 3
+
+        # Pętla do tworzenia kontenerów na topowych championów
+        for x in range(num_rows):
+            for y in range(num_columns):
+                champion_index = x * num_columns + y
+                if champion_index < total_top_champions:
+                    champion_data = top_champions_data[champion_index]
+                    self.createNewTopWidgets(x, y, champion_data)
+
+    def createNewTopWidgets(self, rowNumber, columNumber, champion_data):
+        newName = "frame" + str(rowNumber) + "_" + str(columNumber)
+        print(newName)
+        champion_card = TopChampionCard(champion_data, self.ui.champions_2)
+        champion_card.champion_clicked.connect(self.handle_champion_clicked)
+        self.ui.gridLayout_4.addWidget(champion_card, rowNumber, columNumber, 1, 1)
 
     def profile(self):
         access_token = keyring.get_password("lolify", "token")

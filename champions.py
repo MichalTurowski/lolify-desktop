@@ -13,6 +13,21 @@ def fetch_champions():
         response = requests.get(f"{API_URL}/champion")
         response.raise_for_status()  # Sprawdzenie statusu odpowiedzi
         champions = response.json()  # Pobranie danych w formacie JSON
+        print("DANE CHAMPIONOW ZOSTALY POBRANE")
+        return champions
+    except requests.exceptions.RequestException as e:
+        print("Wystąpił błąd podczas pobierania danych:", e)
+        return None
+
+
+def fetch_top_champions():
+    API_URL = os.getenv("API_URL")
+    # url = "https://lolify.wheelwallet.cloud/api/champion"
+    try:
+        response = requests.get(f"{API_URL}/top3/champion")
+        response.raise_for_status()  # Sprawdzenie statusu odpowiedzi
+        champions = response.json()  # Pobranie danych w formacie JSON
+        print("DANE CHAMPIONOW ZOSTALY POBRANE")
         return champions
     except requests.exceptions.RequestException as e:
         print("Wystąpił błąd podczas pobierania danych:", e)

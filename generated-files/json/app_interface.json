@@ -59,6 +59,10 @@
     {
       "name": "label_logo",
       "pixmap": "Qss/icons/League of Legends.png"
+    },
+    {
+      "name": "label_9",
+      "pixmap": "Qss/icons/icons/font_awesome/solid/medal.png"
     }
   ]
 }

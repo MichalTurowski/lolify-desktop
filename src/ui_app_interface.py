@@ -438,7 +438,7 @@ class Ui_MenuWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, -175, 532, 477))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 532, 477))
         self.verticalLayout_18 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.frame_8 = QFrame(self.scrollAreaWidgetContents_3)
@@ -627,6 +627,173 @@ class Ui_MenuWindow(object):
         self.verticalLayout_13.addWidget(self.scrollArea_2)
 
         self.stackedWidget_2.addWidget(self.page_4)
+        self.page_6 = QWidget()
+        self.page_6.setObjectName(u"page_6")
+        self.verticalLayout_9 = QVBoxLayout(self.page_6)
+        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.scrollArea_5 = QScrollArea(self.page_6)
+        self.scrollArea_5.setObjectName(u"scrollArea_5")
+        self.scrollArea_5.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_5 = QWidget()
+        self.scrollAreaWidgetContents_5.setObjectName(u"scrollAreaWidgetContents_5")
+        self.scrollAreaWidgetContents_5.setGeometry(QRect(0, 0, 475, 328))
+        self.gridLayout_7 = QGridLayout(self.scrollAreaWidgetContents_5)
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.frame_12 = QFrame(self.scrollAreaWidgetContents_5)
+        self.frame_12.setObjectName(u"frame_12")
+        self.frame_12.setFrameShape(QFrame.StyledPanel)
+        self.frame_12.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.frame_12)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.frame_14 = QFrame(self.frame_12)
+        self.frame_14.setObjectName(u"frame_14")
+        self.frame_14.setMaximumSize(QSize(300, 128))
+        self.frame_14.setFrameShape(QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_21 = QVBoxLayout(self.frame_14)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.championImage = QLabel(self.frame_14)
+        self.championImage.setObjectName(u"championImage")
+        self.championImage.setMinimumSize(QSize(150, 100))
+        self.championImage.setMaximumSize(QSize(500, 600))
+
+        self.verticalLayout_21.addWidget(self.championImage)
+
+
+        self.horizontalLayout_11.addWidget(self.frame_14)
+
+        self.frame_15 = QFrame(self.frame_12)
+        self.frame_15.setObjectName(u"frame_15")
+        self.frame_15.setFrameShape(QFrame.StyledPanel)
+        self.frame_15.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_22 = QVBoxLayout(self.frame_15)
+        self.verticalLayout_22.setSpacing(0)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.verticalLayout_22.setContentsMargins(0, 0, 0, 0)
+        self.championName = QLabel(self.frame_15)
+        self.championName.setObjectName(u"championName")
+
+        self.verticalLayout_22.addWidget(self.championName)
+
+        self.championTitle = QLabel(self.frame_15)
+        self.championTitle.setObjectName(u"championTitle")
+
+        self.verticalLayout_22.addWidget(self.championTitle)
+
+        self.championRole = QLabel(self.frame_15)
+        self.championRole.setObjectName(u"championRole")
+
+        self.verticalLayout_22.addWidget(self.championRole)
+
+        self.championDescription = QLabel(self.frame_15)
+        self.championDescription.setObjectName(u"championDescription")
+        self.championDescription.setWordWrap(True)
+
+        self.verticalLayout_22.addWidget(self.championDescription)
+
+        self.championLikes = QLabel(self.frame_15)
+        self.championLikes.setObjectName(u"championLikes")
+
+        self.verticalLayout_22.addWidget(self.championLikes)
+
+        self.likeBtn = QPushButton(self.frame_15)
+        self.likeBtn.setObjectName(u"likeBtn")
+        icon12 = QIcon()
+        icon12.addFile(u":/feather/icons/feather/thumbs-up.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.likeBtn.setIcon(icon12)
+        self.likeBtn.setIconSize(QSize(18, 18))
+
+        self.verticalLayout_22.addWidget(self.likeBtn, 0, Qt.AlignHCenter)
+
+
+        self.horizontalLayout_11.addWidget(self.frame_15)
+
+
+        self.gridLayout_7.addWidget(self.frame_12, 0, 0, 1, 1)
+
+        self.frame_13 = QFrame(self.scrollAreaWidgetContents_5)
+        self.frame_13.setObjectName(u"frame_13")
+        self.frame_13.setFrameShape(QFrame.StyledPanel)
+        self.frame_13.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_12 = QHBoxLayout(self.frame_13)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.frame_16 = QFrame(self.frame_13)
+        self.frame_16.setObjectName(u"frame_16")
+        self.frame_16.setFrameShape(QFrame.StyledPanel)
+        self.frame_16.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_29 = QVBoxLayout(self.frame_16)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.frame_18 = QFrame(self.frame_16)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setFrameShape(QFrame.StyledPanel)
+        self.frame_18.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_24 = QVBoxLayout(self.frame_18)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+
+        self.verticalLayout_29.addWidget(self.frame_18)
+
+        self.frame_20 = QFrame(self.frame_16)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_26 = QVBoxLayout(self.frame_20)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+
+        self.verticalLayout_29.addWidget(self.frame_20)
+
+        self.frame_21 = QFrame(self.frame_16)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setFrameShape(QFrame.StyledPanel)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_27 = QVBoxLayout(self.frame_21)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+
+        self.verticalLayout_29.addWidget(self.frame_21)
+
+        self.frame_19 = QFrame(self.frame_16)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setFrameShape(QFrame.StyledPanel)
+        self.frame_19.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_25 = QVBoxLayout(self.frame_19)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+
+        self.verticalLayout_29.addWidget(self.frame_19)
+
+        self.frame_22 = QFrame(self.frame_16)
+        self.frame_22.setObjectName(u"frame_22")
+        self.frame_22.setFrameShape(QFrame.StyledPanel)
+        self.frame_22.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_28 = QVBoxLayout(self.frame_22)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+
+        self.verticalLayout_29.addWidget(self.frame_22)
+
+
+        self.horizontalLayout_12.addWidget(self.frame_16)
+
+        self.frame_17 = QFrame(self.frame_13)
+        self.frame_17.setObjectName(u"frame_17")
+        self.frame_17.setFrameShape(QFrame.StyledPanel)
+        self.frame_17.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_23 = QVBoxLayout(self.frame_17)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.label_2 = QLabel(self.frame_17)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setFont(font1)
+
+        self.verticalLayout_23.addWidget(self.label_2)
+
+
+        self.horizontalLayout_12.addWidget(self.frame_17)
+
+
+        self.gridLayout_7.addWidget(self.frame_13, 1, 0, 1, 1)
+
+        self.scrollArea_5.setWidget(self.scrollAreaWidgetContents_5)
+
+        self.verticalLayout_9.addWidget(self.scrollArea_5)
+
+        self.stackedWidget_2.addWidget(self.page_6)
 
         self.verticalLayout_11.addWidget(self.stackedWidget_2)
 
@@ -681,7 +848,7 @@ class Ui_MenuWindow(object):
         self.retranslateUi(MenuWindow)
 
         self.stackedWidget_3.setCurrentIndex(0)
-        self.stackedWidget_2.setCurrentIndex(2)
+        self.stackedWidget_2.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MenuWindow)
@@ -751,6 +918,14 @@ class Ui_MenuWindow(object):
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MenuWindow", u"Date", None));
         self.label_7.setText(QCoreApplication.translate("MenuWindow", u"Top Champions", None))
         self.label_9.setText("")
+        self.championImage.setText(QCoreApplication.translate("MenuWindow", u"Image", None))
+        self.championName.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))
+        self.championTitle.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))
+        self.championRole.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))
+        self.championDescription.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))
+        self.championLikes.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))
+        self.likeBtn.setText("")
+        self.label_2.setText(QCoreApplication.translate("MenuWindow", u"Skins", None))
         self.label_8.setText(QCoreApplication.translate("MenuWindow", u"Notification message", None))
 #if QT_CONFIG(tooltip)
         self.closeNotification.setToolTip(QCoreApplication.translate("MenuWindow", u"Close notification", None))

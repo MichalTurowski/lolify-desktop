@@ -11,8 +11,8 @@ def fetch_champions():
     # url = "https://lolify.wheelwallet.cloud/api/champion"
     try:
         response = requests.get(f"{API_URL}/champion")
-        response.raise_for_status()  # Sprawdzenie statusu odpowiedzi
-        champions = response.json()  # Pobranie danych w formacie JSON
+        response.raise_for_status()
+        champions = response.json()
         print("DANE CHAMPIONOW ZOSTALY POBRANE")
         return champions
     except requests.exceptions.RequestException as e:
@@ -25,8 +25,8 @@ def fetch_top_champions():
     # url = "https://lolify.wheelwallet.cloud/api/champion"
     try:
         response = requests.get(f"{API_URL}/top3/champion")
-        response.raise_for_status()  # Sprawdzenie statusu odpowiedzi
-        champions = response.json()  # Pobranie danych w formacie JSON
+        response.raise_for_status()
+        champions = response.json()
         print("DANE CHAMPIONOW ZOSTALY POBRANE")
         return champions
     except requests.exceptions.RequestException as e:

@@ -106,6 +106,13 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
 
     def handle_champion_clicked(self, champion_id):
         print(f"Champion clicked! Champion ID: {champion_id}")
+        champion_data = self.fetch_champion_details(champion_id)
+        if champion_data:
+            self.display_champion_details(champion_data)
+            # Przełącz na widżet champion_details
+            self.ui.stackedWidget_2.setCurrentWidget(self.ui.page_6)
+        else:
+            print("Failed to fetch champion details.")
 
     def switch_to_app_ui(self):
         self.filter_champions(None)
@@ -285,3 +292,190 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         self.ui.gridLayout_6.addWidget(
             favorite_champion_widget, row_number, column_number
         )
+
+    def display_champion_details(self, champion_data):
+        # Usuń wszystkie elementy z układu siatki na stronie champion_details
+        while self.ui.verticalLayout_24.count():
+            item = self.ui.verticalLayout_24.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
+
+        while self.ui.verticalLayout_23.count():
+            item = self.ui.verticalLayout_23.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
+
+        # Uzupełnienie danych o championie
+        self.ui.championName.setText(champion_data["name"])
+        self.ui.championName.setStyleSheet(
+            "font-size: 18pt; font-weight: bold; text-align: left;"
+        )
+
+        self.ui.championTitle.setText(champion_data["title"])
+        self.ui.championTitle.setStyleSheet(
+            "font-size: 18pt; font-weight: bold; text-align: left;"
+        )
+
+        roles_text = ", ".join([role["name"] for role in champion_data["roles"]])
+        self.ui.championRole.setText(f"Role: {roles_text}")
+        self.ui.championRole.setStyleSheet("font-size: 14pt; text-align: left;")
+
+        description_text = champion_data["description"]
+        self.ui.championDescription.setText(description_text)
+        self.ui.championDescription.setStyleSheet("font-size: 9pt; text-align: left;")
+
+        self.ui.championLikes.setText(f"Likes: {champion_data['likes_count']}")
+        self.ui.championLikes.setStyleSheet("font-size: 16pt;")
+
+        # Pobranie i ustawienie obrazka championa
+        image_url = champion_data["image_link"]
+        image_data = requests.get(image_url).content
+        pixmap = QPixmap()
+        pixmap.loadFromData(image_data)
+        # Skalowanie obrazu proporcjonalnie do szerokości zdjęć umiejętności
+        scaled_pixmap = pixmap.scaled(575, 339)
+        self.ui.championImage.setPixmap(scaled_pixmap)
+        self.ui.championImage.setScaledContents(True)
+
+        # Ustawienie akcji dla przycisku "like"
+        self.ui.likeBtn.setEnabled(False)  # Zablokowanie przycisku "like"
+        self.ui.likeBtn.clicked.connect(
+            lambda: self.handle_like_button_clicked(champion_data["id"])
+        )
+
+        # Ustawienie umiejętności championa
+        self.set_champion_skills(champion_data["skills"])
+
+        # Ustawienie skinów championa
+        self.set_champion_skins(champion_data["skins"])
+
+        self.ui.likeBtn.setEnabled(True)  # Odblokowanie przycisku "like"
+
+    def set_champion_skins(self, skins):
+        for i, skin in enumerate(skins):
+            skin_image_url = skin["image_link"]
+            skin_image_data = requests.get(skin_image_url).content
+            skin_pixmap = QPixmap()
+            skin_pixmap.loadFromData(skin_image_data)
+            skin_label = QLabel(self.ui.frame_17)
+            skin_label.setPixmap(skin_pixmap)
+            skin_label.setObjectName(f"skinChampion_{i}")
+            self.ui.verticalLayout_23.addWidget(skin_label)
+
+    def set_champion_skills(self, skills):
+        skill_keys = ["Q", "W", "E", "R", "Passive"]
+        for i, skill in enumerate(skills):
+            skill_name = skill["name"]
+            skill_key = skill_keys[i]
+
+            # Tworzenie etykiety z nazwą umiejętności i jej skrótem
+            skill_label = QLabel(
+                f"<b>{skill_key}</b><br>{skill_name}", self.ui.frame_18
+            )
+            skill_label.setObjectName(f"skillLabel_{i}")
+            skill_label.setStyleSheet("font-size: 12pt;")
+            skill_label.setWordWrap(True)
+
+            # Ustawienie ikony umiejętności
+            skill_image_url = skill["image_link"]
+            skill_image_data = requests.get(skill_image_url).content
+            skill_pixmap = QPixmap()
+            skill_pixmap.loadFromData(skill_image_data)
+            skill_image_label = QLabel(self.ui.frame_18)
+            skill_image_label.setPixmap(skill_pixmap)
+
+            # Dodanie etykiety i ikony do układu pionowego
+            self.ui.verticalLayout_24.addWidget(skill_label)
+            self.ui.verticalLayout_24.addWidget(skill_image_label)
+
+    def fetch_champion_details(self, champion_id):
+        url = f"{API_URL}/champion/{champion_id}"
+        headers = {"Content-Type": "application/json", "Accept": "application/json"}
+        response = requests.get(url, headers=headers)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            QMessageBox.warning(
+                self, "Błąd", "Nie udało się pobrać danych o championie."
+            )
+            return None
+
+    def handle_like_button_clicked(self, champion_id):
+        liked = self.check_if_champion_liked(champion_id)
+        if liked:
+            self.dislike_champion(champion_id)
+        else:
+            self.like_champion(champion_id)
+
+    def like_champion(self, champion_id):
+        access_token = keyring.get_password("lolify", "token")
+        if access_token:
+            headers = {
+                "Authorization": f"Bearer {access_token}",
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+            response = requests.post(
+                f"{API_URL}/champion/like/{champion_id}", headers=headers
+            )
+            if response.status_code == 200:
+                QMessageBox.information(self, "Polubiono", "Champion został polubiony.")
+            elif response.status_code == 404:
+                QMessageBox.warning(self, "Błąd", "Nie znaleziono championa.")
+            else:
+                QMessageBox.warning(
+                    self, "Błąd", "Wystąpił problem podczas polubienia championa."
+                )
+        else:
+            QMessageBox.warning(self, "Błąd", "Użytkownik nie jest zalogowany.")
+
+    def dislike_champion(self, champion_id):
+        access_token = keyring.get_password("lolify", "token")
+        if access_token:
+            headers = {
+                "Authorization": f"Bearer {access_token}",
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+            response = requests.post(
+                f"{API_URL}/champion/dislike/{champion_id}", headers=headers
+            )
+            if response.status_code == 200:
+                QMessageBox.information(
+                    self, "Nie polubiono", "Champion został odlubiony."
+                )
+            elif response.status_code == 404:
+                QMessageBox.warning(self, "Błąd", "Nie znaleziono championa.")
+            else:
+                QMessageBox.warning(
+                    self, "Błąd", "Wystąpił problem podczas odlubienia championa."
+                )
+        else:
+            QMessageBox.warning(self, "Błąd", "Użytkownik nie jest zalogowany.")
+
+    def check_if_champion_liked(self, champion_id):
+        # Pobranie danych użytkownika z API
+        access_token = keyring.get_password("lolify", "token")
+        headers = {
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        }
+        response = requests.get(f"{API_URL}/me", headers=headers)
+
+        # Sprawdzenie statusu odpowiedzi
+        if response.status_code == 200:
+            user_data = response.json()
+            # Pobranie listy polubionych championów użytkownika
+            likes = user_data.get("likes", [])
+            # Sprawdzenie, czy identyfikator championa znajduje się na liście polubionych championów
+            champion_ids = [like["id"] for like in likes]
+            if champion_id in champion_ids:
+                return True  # Użytkownik polubił już tego championa
+            else:
+                return False  # Użytkownik nie polubił tego championa
+        else:
+            print("Failed to get user data. Status code:", response.status_code)
+            return False  # Nie udało się pobrać danych użytkownika

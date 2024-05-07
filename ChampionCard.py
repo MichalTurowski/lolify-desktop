@@ -29,8 +29,8 @@ class ChampionCard(QWidget):
         layout.addWidget(name_label)
 
         self.setLayout(layout)
-        self.setMinimumWidth(150)  # Minimalna szerokość
-        self.setMaximumWidth(500)  # Maksymalna szerokość
+        self.setMinimumWidth(150)
+        self.setMaximumWidth(500)
         self.setMinimumHeight(100)
         self.setMaximumHeight(600)
         self.setStyleSheet(
@@ -65,4 +65,4 @@ class ChampionCard(QWidget):
             return pixmap
         except requests.exceptions.RequestException as e:
             print("Error fetching image:", e)
-            return QPixmap()  # Return an empty pixmap on error
+            return QPixmap()

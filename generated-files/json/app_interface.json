@@ -49,6 +49,10 @@
       "icon": "Qss/icons/icons/feather/x-circle.png"
     },
     {
+      "name": "likeBtn",
+      "icon": "Qss/icons/icons/feather/thumbs-up.png"
+    },
+    {
       "name": "closeNotification",
       "icon": "Qss/icons/icons/feather/window_close.png"
     }

@@ -31,14 +31,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ui.notificationSlide.collapseMenu()
         self.show()
 
-        self.ui.signInBtn.clicked.connect(
-            # lambda: self.showNotification("Sign in button clicked!")
-            lambda: self.login_or_refresh()
-        )
-        self.ui.signUpBtn.clicked.connect(
-            # lambda: self.showNotification("Sign up button clicked!")
-            lambda: self.register()
-        )
+        self.ui.signInBtn.clicked.connect(lambda: self.login_or_refresh())
+        self.ui.signUpBtn.clicked.connect(lambda: self.register())
 
         self.ui.checkBox.stateChanged.connect(lambda: self.darkMode())
 
@@ -48,9 +42,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def darkMode(self):
         settings = QSettings()
-        print("Current theme", settings.value("THEME"))
-        print("Current Icons color", settings.value("ICONS-COLOR"))
-
         if settings.value("THEME") == "Dark-Blue":
             settings.setValue("THEME", "Light-Blue")
 
@@ -66,6 +57,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.check_token_expiration()
             self.close()
             app_logic = AppWindowLogic()
+            app_logic.update_top_champions_ui()
         else:
             self.login()
 
@@ -91,6 +83,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             print("Logged in successfully.")
             self.close()
             app_logic = AppWindowLogic()
+            app_logic.update_top_champions_ui()
         elif response.status_code == 401:
             self.showNotification("These credentials don't match our records.")
         else:

@@ -31,7 +31,6 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         loadJsonStyle(self, self.ui, jsonFiles={"json-styles/app_style.json"})
 
         QAppSettings.updateAppSettings(self)
-
         self.ui.notificationSlide.collapseMenu()
         self.show()
         self.ui.championsBtn.clicked.connect(lambda: self.switch_to_app_ui())
@@ -67,9 +66,6 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
     def darkMode(self):
         settings = QSettings()
 
-        print("Current theme", settings.value("THEME"))
-        print("Current Icons color", settings.value("ICONS-COLOR"))
-
         if settings.value("THEME") == "Dark-Blue":
 
             settings.setValue("THEME", "Light-Blue")
@@ -93,36 +89,32 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
                 print("Successfully logged out and token deleted.")
                 self.close()
             else:
+                self.showNotification("Failed to log out.")
                 print("Failed to log out.")
         else:
+            self.showNotification("No token found. You are not logged in.")
             print("No token found. You are not logged in.")
 
     def createNewWidgets(self, rowNumber, columNumber, champion_data):
-        newName = "frame" + str(rowNumber) + "_" + str(columNumber)
-        print(newName)
         champion_card = ChampionCard(champion_data, self.ui.champions)
         champion_card.champion_clicked.connect(self.handle_champion_clicked)
         self.ui.gridLayout_2.addWidget(champion_card, rowNumber, columNumber, 1, 1)
 
     def handle_champion_clicked(self, champion_id):
-        print(f"Champion clicked! Champion ID: {champion_id}")
         champion_data = self.fetch_champion_details(champion_id)
         if champion_data:
             self.display_champion_details(champion_data)
-            # Przełącz na widżet champion_details
             self.ui.stackedWidget_2.setCurrentWidget(self.ui.page_6)
         else:
-            print("Failed to fetch champion details.")
+            self.showNotification("Failed to fetch champion details.")
 
     def switch_to_app_ui(self):
         self.filter_champions(None)
 
     def filter_champions(self, role_id):
         if role_id is None:
-            # Pobierz wszystkich championów
             champions_data = AppWindowLogic.champions_data
         else:
-            # Pobierz championów według roli z API
             headers = {
                 "Content-Type": "application/json",
                 "Accept": "application/json",
@@ -134,25 +126,23 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
                 champions_data = response.json()
             else:
                 print("Failed to fetch champions by role.")
+                self.showNotification("Failed to fetch champions by role.")
                 return
 
         self.update_champions_ui(champions_data)
 
     def update_champions_ui(self, champions_data):
-        # Usuń wszystkie elementy z układu siatki
         while self.ui.gridLayout_2.count():
             item = self.ui.gridLayout_2.takeAt(0)
             widget = item.widget()
             if widget:
                 widget.deleteLater()
-        # Zlicz liczbę bohaterów
+
         total_champions = len(champions_data)
 
-        # Oblicz liczbę wierszy i kolumn
-        num_rows = (total_champions + 4) // 5  # 5 kolumn na wiersz
+        num_rows = (total_champions + 4) // 5
         num_columns = 5
 
-        # Pętla do tworzenia kontenerów na bohaterów
         for x in range(num_rows):
             for y in range(num_columns):
                 champion_index = x * num_columns + y
@@ -163,14 +153,11 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
     def update_top_champions_ui(self):
         top_champions_data = AppWindowLogic.top_champions_data
 
-        # Zlicz liczbę topowych championów
         total_top_champions = len(top_champions_data)
 
-        # Oblicz liczbę wierszy i kolumn
         num_rows = 1
         num_columns = 3
 
-        # Pętla do tworzenia kontenerów na topowych championów
         for x in range(num_rows):
             for y in range(num_columns):
                 champion_index = x * num_columns + y
@@ -179,8 +166,6 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
                     self.createNewTopWidgets(x, y, champion_data)
 
     def createNewTopWidgets(self, rowNumber, columNumber, champion_data):
-        newName = "frame" + str(rowNumber) + "_" + str(columNumber)
-        print(newName)
         champion_card = TopChampionCard(champion_data, self.ui.champions_2)
         champion_card.champion_clicked.connect(self.handle_champion_clicked)
         self.ui.gridLayout_4.addWidget(champion_card, rowNumber, columNumber, 1, 1)
@@ -188,11 +173,7 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
     def search_and_display_profile(self):
         username = self.ui.friendName.text()
         if not username:
-            QMessageBox.information(
-                self,
-                "Brak nazwy użytkownika",
-                "Wprowadź nazwę użytkownika do wyszukania.",
-            )
+            self.showNotification("Enter friend name.")
             return
 
         access_token = keyring.get_password("lolify", "token")
@@ -206,9 +187,7 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
             user_data = response.json()
             self.profile(user_data)
         else:
-            QMessageBox.information(
-                self, "Brak użytkownika", "Nie znaleziono użytkownika o podanej nazwie."
-            )
+            self.showNotification("User not found.")
 
     def profile(self, user_data=None):
         if user_data is None:
@@ -233,43 +212,34 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         logs = user_data.get("logs", [])
         likes = user_data.get("likes", [])
 
-        # Tworzenie i wyświetlanie kart ulubionych championów
         self.create_favorite_champion_widgets(likes)
         self.ui.tableWidget.setColumnWidth(0, 300)
         self.ui.tableWidget.setColumnWidth(1, 200)
         self.ui.tableWidget.setRowCount(len(logs))
         row = 0
-        # Iteruj przez logi i wydrukuj tekst i znacznik czasu
         for log in logs:
             text = log.get("text")
             timestamp = log.get("timestamp")
             parsed_timestamp = datetime.fromisoformat(timestamp[:-1])
-            print("Text:", text)
-            print("Timestamp:", timestamp)
             item_text = QTableWidgetItem(text)
             item_timestamp = parsed_timestamp.strftime("%d-%m-%Y, %H:%M:%S")
             self.ui.tableWidget.setItem(row, 0, item_text)
             self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(item_timestamp))
             row += 1
 
-        # Przywróć widok kart ulubionych championów do początkowego stanu
         self.ui.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 956, 441))
         self.ui.gridLayout_6.setGeometry(QRect(10, 10, 931, 421))
 
     def create_favorite_champion_widgets(self, likes):
-        # Usuń wszystkie elementy z układu siatki
         while self.ui.gridLayout_6.count():
             item = self.ui.gridLayout_6.takeAt(0)
             widget = item.widget()
             if widget:
                 widget.deleteLater()
-        # Zlicz liczbę bohaterów
 
-        # Obliczenie liczby wierszy i kolumn
         num_columns = 5
         num_rows = (len(likes) + num_columns - 1) // num_columns
 
-        # Tworzenie i wyświetlanie kart ulubionych championów
         for i, like in enumerate(likes):
             champion_data = {
                 "id": like["id"],
@@ -285,16 +255,13 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
             )
 
     def create_favorite_champion_widget(self, row_number, column_number, champion_data):
-        # Tworzenie widgetu karty ulubionego championa
         favorite_champion_widget = ChampionCard(champion_data, self.ui.champions_3)
         favorite_champion_widget.champion_clicked.connect(self.handle_champion_clicked)
-        # Dodanie widgetu do layoutu
         self.ui.gridLayout_6.addWidget(
             favorite_champion_widget, row_number, column_number
         )
 
     def display_champion_details(self, champion_data):
-        # Usuń wszystkie elementy z układu siatki na stronie champion_details
         while self.ui.verticalLayout_24.count():
             item = self.ui.verticalLayout_24.takeAt(0)
             widget = item.widget()
@@ -307,7 +274,6 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
             if widget:
                 widget.deleteLater()
 
-        # Uzupełnienie danych o championie
         self.ui.championName.setText(champion_data["name"])
         self.ui.championName.setStyleSheet(
             "font-size: 18pt; font-weight: bold; text-align: left;"
@@ -329,29 +295,24 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         self.ui.championLikes.setText(f"Likes: {champion_data['likes_count']}")
         self.ui.championLikes.setStyleSheet("font-size: 16pt;")
 
-        # Pobranie i ustawienie obrazka championa
         image_url = champion_data["image_link"]
         image_data = requests.get(image_url).content
         pixmap = QPixmap()
         pixmap.loadFromData(image_data)
-        # Skalowanie obrazu proporcjonalnie do szerokości zdjęć umiejętności
         scaled_pixmap = pixmap.scaled(575, 339)
         self.ui.championImage.setPixmap(scaled_pixmap)
         self.ui.championImage.setScaledContents(True)
 
-        # Ustawienie akcji dla przycisku "like"
-        self.ui.likeBtn.setEnabled(False)  # Zablokowanie przycisku "like"
+        self.ui.likeBtn.setEnabled(False)
         self.ui.likeBtn.clicked.connect(
             lambda: self.handle_like_button_clicked(champion_data["id"])
         )
 
-        # Ustawienie umiejętności championa
         self.set_champion_skills(champion_data["skills"])
 
-        # Ustawienie skinów championa
         self.set_champion_skins(champion_data["skins"])
 
-        self.ui.likeBtn.setEnabled(True)  # Odblokowanie przycisku "like"
+        self.ui.likeBtn.setEnabled(True)
 
     def set_champion_skins(self, skins):
         for i, skin in enumerate(skins):
@@ -370,7 +331,6 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
             skill_name = skill["name"]
             skill_key = skill_keys[i]
 
-            # Tworzenie etykiety z nazwą umiejętności i jej skrótem
             skill_label = QLabel(
                 f"<b>{skill_key}</b><br>{skill_name}", self.ui.frame_18
             )
@@ -378,7 +338,6 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
             skill_label.setStyleSheet("font-size: 12pt;")
             skill_label.setWordWrap(True)
 
-            # Ustawienie ikony umiejętności
             skill_image_url = skill["image_link"]
             skill_image_data = requests.get(skill_image_url).content
             skill_pixmap = QPixmap()
@@ -386,7 +345,6 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
             skill_image_label = QLabel(self.ui.frame_18)
             skill_image_label.setPixmap(skill_pixmap)
 
-            # Dodanie etykiety i ikony do układu pionowego
             self.ui.verticalLayout_24.addWidget(skill_label)
             self.ui.verticalLayout_24.addWidget(skill_image_label)
 
@@ -397,9 +355,7 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         if response.status_code == 200:
             return response.json()
         else:
-            QMessageBox.warning(
-                self, "Błąd", "Nie udało się pobrać danych o championie."
-            )
+            self.showNotification("Failed to fetcg cgampion data.")
             return None
 
     def handle_like_button_clicked(self, champion_id):
@@ -421,15 +377,20 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
                 f"{API_URL}/champion/like/{champion_id}", headers=headers
             )
             if response.status_code == 200:
-                QMessageBox.information(self, "Polubiono", "Champion został polubiony.")
+                self.showNotification(
+                    "Champion has been added to the liked champions list."
+                )
+                champion_data = self.fetch_champion_details(champion_id)
+                if champion_data:
+                    self.display_champion_details(champion_data)
             elif response.status_code == 404:
-                QMessageBox.warning(self, "Błąd", "Nie znaleziono championa.")
+                self.showNotification("Champion not found.")
             else:
-                QMessageBox.warning(
-                    self, "Błąd", "Wystąpił problem podczas polubienia championa."
+                self.showNotification(
+                    "There was a problem adding the champion to the liked champions list."
                 )
         else:
-            QMessageBox.warning(self, "Błąd", "Użytkownik nie jest zalogowany.")
+            self.showNotification("User is not logged in.")
 
     def dislike_champion(self, champion_id):
         access_token = keyring.get_password("lolify", "token")
@@ -443,20 +404,22 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
                 f"{API_URL}/champion/dislike/{champion_id}", headers=headers
             )
             if response.status_code == 200:
-                QMessageBox.information(
-                    self, "Nie polubiono", "Champion został odlubiony."
+                self.showNotification(
+                    "Champion has been removed from the liked champions list."
                 )
+                champion_data = self.fetch_champion_details(champion_id)
+                if champion_data:
+                    self.display_champion_details(champion_data)
             elif response.status_code == 404:
-                QMessageBox.warning(self, "Błąd", "Nie znaleziono championa.")
+                self.showNotification("Champion not found.")
             else:
-                QMessageBox.warning(
-                    self, "Błąd", "Wystąpił problem podczas odlubienia championa."
+                self.showNotification(
+                    "There was a problem removing the champion from the liked champions list."
                 )
         else:
-            QMessageBox.warning(self, "Błąd", "Użytkownik nie jest zalogowany.")
+            self.showNotification("User is not logged in.")
 
     def check_if_champion_liked(self, champion_id):
-        # Pobranie danych użytkownika z API
         access_token = keyring.get_password("lolify", "token")
         headers = {
             "Authorization": f"Bearer {access_token}",
@@ -465,17 +428,15 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         }
         response = requests.get(f"{API_URL}/me", headers=headers)
 
-        # Sprawdzenie statusu odpowiedzi
         if response.status_code == 200:
             user_data = response.json()
-            # Pobranie listy polubionych championów użytkownika
             likes = user_data.get("likes", [])
-            # Sprawdzenie, czy identyfikator championa znajduje się na liście polubionych championów
             champion_ids = [like["id"] for like in likes]
             if champion_id in champion_ids:
-                return True  # Użytkownik polubił już tego championa
+                return True
             else:
-                return False  # Użytkownik nie polubił tego championa
+                return False
         else:
+            self.showNotification("Failed to get user data.")
             print("Failed to get user data. Status code:", response.status_code)
-            return False  # Nie udało się pobrać danych użytkownika
+            return False

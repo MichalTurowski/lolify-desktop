@@ -848,7 +848,7 @@ class Ui_MenuWindow(object):
         self.retranslateUi(MenuWindow)
 
         self.stackedWidget_3.setCurrentIndex(0)
-        self.stackedWidget_2.setCurrentIndex(3)
+        self.stackedWidget_2.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MenuWindow)

@@ -25,6 +25,10 @@
       "icon": "Qss/icons/icons/feather/window_close.png"
     },
     {
+      "name": "search",
+      "icon": "Qss/icons/icons/feather/search.png"
+    },
+    {
       "name": "logoutBtn",
       "icon": "Qss/icons/icons/feather/log-out.png"
     },

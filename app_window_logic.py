@@ -52,6 +52,13 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         self.ui.midBtn.clicked.connect(lambda: self.filter_champions(3))
         self.ui.adcBtn.clicked.connect(lambda: self.filter_champions(4))
         self.ui.supportBtn.clicked.connect(lambda: self.filter_champions(5))
+        self.ui.searchBtn.clicked.connect(
+            lambda: self.ui.centerMenuContainer.expandMenu()
+        )
+        self.ui.search.clicked.connect(lambda: self.search_and_display_profile())
+        self.ui.closeMoreMenu.clicked.connect(
+            lambda: self.ui.centerMenuContainer.collapseMenu()
+        )
 
     def showNotification(self, msg):
         self.ui.label_8.setText(msg)
@@ -171,47 +178,85 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
         champion_card.champion_clicked.connect(self.handle_champion_clicked)
         self.ui.gridLayout_4.addWidget(champion_card, rowNumber, columNumber, 1, 1)
 
-    def profile(self):
+    def search_and_display_profile(self):
+        username = self.ui.friendName.text()
+        if not username:
+            QMessageBox.information(
+                self,
+                "Brak nazwy użytkownika",
+                "Wprowadź nazwę użytkownika do wyszukania.",
+            )
+            return
+
         access_token = keyring.get_password("lolify", "token")
         headers = {
             "Authorization": f"Bearer {access_token}",
             "Content-Type": "application/json",
             "Accept": "application/json",
         }
-        response = requests.get(f"{API_URL}/me", headers=headers)
+        response = requests.get(f"{API_URL}/profile/{username}", headers=headers)
         if response.status_code == 200:
             user_data = response.json()
-            summoner_name = user_data.get("name", "Unknown")
-            summoner_email = user_data.get("email", "Unknown")
-            self.ui.summonerName.setText(summoner_name)
-            self.ui.summonerEmail.setText(summoner_email)
-
-            logs = user_data.get("logs", [])
-            likes = user_data.get("likes", [])
-
-            # Tworzenie i wyświetlanie kart ulubionych championów
-            self.create_favorite_champion_widgets(likes)
-            self.ui.tableWidget.setColumnWidth(0, 300)
-            self.ui.tableWidget.setColumnWidth(1, 200)
-            self.ui.tableWidget.setRowCount(len(logs))
-            row = 0
-            # Iteruj przez logi i wydrukuj tekst i znacznik czasu
-            for log in logs:
-                text = log.get("text")
-                timestamp = log.get("timestamp")
-                parsed_timestamp = datetime.fromisoformat(timestamp[:-1])
-                print("Text:", text)
-                print("Timestamp:", timestamp)
-                item_text = QTableWidgetItem(text)
-                item_timestamp = parsed_timestamp.strftime("%d-%m-%Y, %H:%M:%S")
-                self.ui.tableWidget.setItem(row, 0, item_text)
-                self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(item_timestamp))
-                row += 1
-
+            self.profile(user_data)
         else:
-            print("Failed to get user data. Status code:", response.status_code)
+            QMessageBox.information(
+                self, "Brak użytkownika", "Nie znaleziono użytkownika o podanej nazwie."
+            )
+
+    def profile(self, user_data=None):
+        if user_data is None:
+            access_token = keyring.get_password("lolify", "token")
+            headers = {
+                "Authorization": f"Bearer {access_token}",
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+            response = requests.get(f"{API_URL}/me", headers=headers)
+            if response.status_code == 200:
+                user_data = response.json()
+            else:
+                print("Failed to get user data. Status code:", response.status_code)
+                return
+
+        summoner_name = user_data.get("name", "Unknown")
+        summoner_email = user_data.get("email", "Unknown")
+        self.ui.summonerName.setText(summoner_name)
+        self.ui.summonerEmail.setText(summoner_email)
+
+        logs = user_data.get("logs", [])
+        likes = user_data.get("likes", [])
+
+        # Tworzenie i wyświetlanie kart ulubionych championów
+        self.create_favorite_champion_widgets(likes)
+        self.ui.tableWidget.setColumnWidth(0, 300)
+        self.ui.tableWidget.setColumnWidth(1, 200)
+        self.ui.tableWidget.setRowCount(len(logs))
+        row = 0
+        # Iteruj przez logi i wydrukuj tekst i znacznik czasu
+        for log in logs:
+            text = log.get("text")
+            timestamp = log.get("timestamp")
+            parsed_timestamp = datetime.fromisoformat(timestamp[:-1])
+            print("Text:", text)
+            print("Timestamp:", timestamp)
+            item_text = QTableWidgetItem(text)
+            item_timestamp = parsed_timestamp.strftime("%d-%m-%Y, %H:%M:%S")
+            self.ui.tableWidget.setItem(row, 0, item_text)
+            self.ui.tableWidget.setItem(row, 1, QTableWidgetItem(item_timestamp))
+            row += 1
+
+        # Przywróć widok kart ulubionych championów do początkowego stanu
+        self.ui.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 956, 441))
+        self.ui.gridLayout_6.setGeometry(QRect(10, 10, 931, 421))
 
     def create_favorite_champion_widgets(self, likes):
+        # Usuń wszystkie elementy z układu siatki
+        while self.ui.gridLayout_6.count():
+            item = self.ui.gridLayout_6.takeAt(0)
+            widget = item.widget()
+            if widget:
+                widget.deleteLater()
+        # Zlicz liczbę bohaterów
 
         # Obliczenie liczby wierszy i kolumn
         num_columns = 5

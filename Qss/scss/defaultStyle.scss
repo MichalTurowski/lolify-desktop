@@ -54,6 +54,26 @@ QLineEdit{
             color: $COLOR_BACKGROUND_3;
         }
 }
+#stackedWidget_3 QPushButton{
+    padding: 8px 10px;
+    border-radius: 8px;
+    background-color: $COLOR_ACCENT_3;
+    color: $COLOR_BACKGROUND_3;
+        &:hover {
+            background-color: $COLOR_ACCENT_1;
+            color: $COLOR_BACKGROUND_1;
+        }
+
+        &:focus {
+            background-color: $COLOR_ACCENT_3;
+            color: $COLOR_BACKGROUND_3;
+        }
+
+        &:selected {
+            background-color: $COLOR_ACCENT_3;
+            color: $COLOR_BACKGROUND_3;
+        }
+}
 #stackedWidget{
     background-color: $COLOR_ACCENT_3;
     border-top-right-radius: 100px;

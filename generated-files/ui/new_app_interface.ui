@@ -400,7 +400,7 @@
           <property name="bottomMargin">
            <number>0</number>
           </property>
-          <item alignment="Qt::AlignTop">
+          <item alignment="Qt::AlignBottom">
            <widget class="QFrame" name="frame_4">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -412,7 +412,7 @@
              <item>
               <widget class="QLabel" name="label">
                <property name="text">
-                <string>More Menu</string>
+                <string>Search friend</string>
                </property>
                <property name="alignment">
                 <set>Qt::AlignCenter</set>
@@ -443,43 +443,45 @@
            </widget>
           </item>
           <item>
-           <widget class="QStackedWidget" name="stackedWidget">
-            <property name="currentIndex">
-             <number>1</number>
+           <widget class="QStackedWidget" name="stackedWidget_3">
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>200</height>
+             </size>
             </property>
-            <widget class="QWidget" name="page">
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <widget class="QWidget" name="page_2">
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>200</height>
+              </size>
+             </property>
              <layout class="QVBoxLayout" name="verticalLayout_8">
               <item>
-               <widget class="QLabel" name="label_2">
-                <property name="font">
-                 <font>
-                  <pointsize>13</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Search friend</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+               <widget class="QLineEdit" name="friendName">
+                <property name="placeholderText">
+                 <string>Name</string>
                 </property>
                </widget>
               </item>
-             </layout>
-            </widget>
-            <widget class="QWidget" name="page_2">
-             <layout class="QVBoxLayout" name="verticalLayout_9">
-              <item>
-               <widget class="QLabel" name="label_3">
-                <property name="font">
-                 <font>
-                  <pointsize>13</pointsize>
-                 </font>
+              <item alignment="Qt::AlignHCenter">
+               <widget class="QPushButton" name="search">
+                <property name="maximumSize">
+                 <size>
+                  <width>90</width>
+                  <height>16777215</height>
+                 </size>
                 </property>
                 <property name="text">
-                 <string>Profile</string>
+                 <string>Search</string>
                 </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                <property name="icon">
+                 <iconset resource="../Qss/icons/_icons.qrc">
+                  <normaloff>:/feather/icons/feather/search.png</normaloff>:/feather/icons/feather/search.png</iconset>
                 </property>
                </widget>
               </item>
@@ -691,7 +693,7 @@
              <item>
               <widget class="QCustomQStackedWidget" name="stackedWidget_2">
                <property name="currentIndex">
-                <number>1</number>
+                <number>2</number>
                </property>
                <widget class="QWidget" name="page_3">
                 <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -844,7 +846,7 @@
                    <widget class="QWidget" name="scrollAreaWidgetContents_3">
                     <property name="geometry">
                      <rect>
-                      <x>-57</x>
+                      <x>0</x>
                       <y>-175</y>
                       <width>532</width>
                       <height>477</height>

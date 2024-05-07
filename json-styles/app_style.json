@@ -55,12 +55,12 @@
     ],
     "QCustomQStackedWidget":[
 		{
-			"name":"stackedWidget",
+			"name":"stackedWidget_3",
 			"navigation":[
 				{
 					"navigationButtons":[
 						{
-                            "searchBtn": "page"
+                            "searchBtn": "page_2"
 						}
 					]
 				}

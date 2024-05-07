@@ -16,9 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFrame, QGridLayout, QHBoxLayout,
-    QHeaderView, QLabel, QMainWindow, QPushButton,
-    QScrollArea, QSizePolicy, QSpacerItem, QStackedWidget,
-    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
+    QHeaderView, QLabel, QLineEdit, QMainWindow,
+    QPushButton, QScrollArea, QSizePolicy, QSpacerItem,
+    QStackedWidget, QTableWidget, QTableWidgetItem, QVBoxLayout,
+    QWidget)
 
 from Custom_Widgets.QCustomCheckBox import QCustomCheckBox
 from Custom_Widgets.QCustomQStackedWidget import QCustomQStackedWidget
@@ -204,38 +205,31 @@ class Ui_MenuWindow(object):
         self.horizontalLayout_2.addWidget(self.closeMoreMenu, 0, Qt.AlignRight)
 
 
-        self.verticalLayout_7.addWidget(self.frame_4, 0, Qt.AlignTop)
+        self.verticalLayout_7.addWidget(self.frame_4, 0, Qt.AlignBottom)
 
-        self.stackedWidget = QStackedWidget(self.centerMenuSubContainer)
-        self.stackedWidget.setObjectName(u"stackedWidget")
-        self.page = QWidget()
-        self.page.setObjectName(u"page")
-        self.verticalLayout_8 = QVBoxLayout(self.page)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.label_2 = QLabel(self.page)
-        self.label_2.setObjectName(u"label_2")
-        font1 = QFont()
-        font1.setPointSize(13)
-        self.label_2.setFont(font1)
-        self.label_2.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_8.addWidget(self.label_2)
-
-        self.stackedWidget.addWidget(self.page)
+        self.stackedWidget_3 = QStackedWidget(self.centerMenuSubContainer)
+        self.stackedWidget_3.setObjectName(u"stackedWidget_3")
+        self.stackedWidget_3.setMaximumSize(QSize(16777215, 200))
         self.page_2 = QWidget()
         self.page_2.setObjectName(u"page_2")
-        self.verticalLayout_9 = QVBoxLayout(self.page_2)
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.label_3 = QLabel(self.page_2)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setFont(font1)
-        self.label_3.setAlignment(Qt.AlignCenter)
+        self.page_2.setMaximumSize(QSize(16777215, 200))
+        self.verticalLayout_8 = QVBoxLayout(self.page_2)
+        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
+        self.friendName = QLineEdit(self.page_2)
+        self.friendName.setObjectName(u"friendName")
 
-        self.verticalLayout_9.addWidget(self.label_3)
+        self.verticalLayout_8.addWidget(self.friendName)
 
-        self.stackedWidget.addWidget(self.page_2)
+        self.search = QPushButton(self.page_2)
+        self.search.setObjectName(u"search")
+        self.search.setMaximumSize(QSize(90, 16777215))
+        self.search.setIcon(icon3)
 
-        self.verticalLayout_7.addWidget(self.stackedWidget)
+        self.verticalLayout_8.addWidget(self.search, 0, Qt.AlignHCenter)
+
+        self.stackedWidget_3.addWidget(self.page_2)
+
+        self.verticalLayout_7.addWidget(self.stackedWidget_3)
 
 
         self.verticalLayout_6.addWidget(self.centerMenuSubContainer, 0, Qt.AlignLeft)
@@ -276,10 +270,10 @@ class Ui_MenuWindow(object):
 
         self.label_5 = QLabel(self.frame_6)
         self.label_5.setObjectName(u"label_5")
-        font2 = QFont()
-        font2.setPointSize(18)
-        font2.setBold(True)
-        self.label_5.setFont(font2)
+        font1 = QFont()
+        font1.setPointSize(18)
+        font1.setBold(True)
+        self.label_5.setFont(font1)
 
         self.horizontalLayout_5.addWidget(self.label_5)
 
@@ -379,9 +373,9 @@ class Ui_MenuWindow(object):
         self.allBtn = QPushButton(self.paginationButtons)
         self.allBtn.setObjectName(u"allBtn")
         self.allBtn.setMaximumSize(QSize(40, 40))
-        font3 = QFont()
-        font3.setHintingPreference(QFont.PreferDefaultHinting)
-        self.allBtn.setFont(font3)
+        font2 = QFont()
+        font2.setHintingPreference(QFont.PreferDefaultHinting)
+        self.allBtn.setFont(font2)
 
         self.horizontalLayout_9.addWidget(self.allBtn)
 
@@ -444,7 +438,7 @@ class Ui_MenuWindow(object):
         self.scrollArea_3.setWidgetResizable(True)
         self.scrollAreaWidgetContents_3 = QWidget()
         self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
-        self.scrollAreaWidgetContents_3.setGeometry(QRect(-57, -175, 532, 477))
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, -175, 532, 477))
         self.verticalLayout_18 = QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.frame_8 = QFrame(self.scrollAreaWidgetContents_3)
@@ -458,15 +452,15 @@ class Ui_MenuWindow(object):
         self.label_4.setObjectName(u"label_4")
         self.label_4.setMinimumSize(QSize(0, 30))
         self.label_4.setMaximumSize(QSize(16777215, 30))
-        self.label_4.setFont(font2)
+        self.label_4.setFont(font1)
 
         self.verticalLayout_16.addWidget(self.label_4)
 
         self.label_6 = QLabel(self.frame_8)
         self.label_6.setObjectName(u"label_6")
-        font4 = QFont()
-        font4.setBold(True)
-        self.label_6.setFont(font4)
+        font3 = QFont()
+        font3.setBold(True)
+        self.label_6.setFont(font3)
 
         self.verticalLayout_16.addWidget(self.label_6)
 
@@ -483,7 +477,7 @@ class Ui_MenuWindow(object):
 
         self.label_10 = QLabel(self.frame_8)
         self.label_10.setObjectName(u"label_10")
-        self.label_10.setFont(font4)
+        self.label_10.setFont(font3)
 
         self.verticalLayout_16.addWidget(self.label_10)
 
@@ -498,7 +492,7 @@ class Ui_MenuWindow(object):
         self.label_11 = QLabel(self.frame_8)
         self.label_11.setObjectName(u"label_11")
         self.label_11.setMaximumSize(QSize(16777215, 16777210))
-        self.label_11.setFont(font2)
+        self.label_11.setFont(font1)
         self.label_11.setContextMenuPolicy(Qt.DefaultContextMenu)
         self.label_11.setLayoutDirection(Qt.LeftToRight)
         self.label_11.setAlignment(Qt.AlignCenter)
@@ -555,7 +549,7 @@ class Ui_MenuWindow(object):
         self.line = QFrame(self.frame_10)
         self.line.setObjectName(u"line")
         self.line.setMinimumSize(QSize(494, 0))
-        self.line.setFont(font2)
+        self.line.setFont(font1)
         self.line.setFrameShape(QFrame.HLine)
         self.line.setFrameShadow(QFrame.Sunken)
 
@@ -606,12 +600,12 @@ class Ui_MenuWindow(object):
         self.topChampions.setObjectName(u"topChampions")
         self.topChampions.setMinimumSize(QSize(0, 0))
         self.topChampions.setMaximumSize(QSize(494, 215))
-        self.topChampions.setFont(font2)
+        self.topChampions.setFont(font1)
         self.horizontalLayout_10 = QHBoxLayout(self.topChampions)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.label_7 = QLabel(self.topChampions)
         self.label_7.setObjectName(u"label_7")
-        self.label_7.setFont(font2)
+        self.label_7.setFont(font1)
 
         self.horizontalLayout_10.addWidget(self.label_7)
 
@@ -686,8 +680,8 @@ class Ui_MenuWindow(object):
 
         self.retranslateUi(MenuWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_2.setCurrentIndex(1)
+        self.stackedWidget_3.setCurrentIndex(0)
+        self.stackedWidget_2.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(MenuWindow)
@@ -716,13 +710,13 @@ class Ui_MenuWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.profileBtn.setText(QCoreApplication.translate("MenuWindow", u"  Profile", None))
         self.checkBox_app.setText(QCoreApplication.translate("MenuWindow", u"Dark Mode", None))
-        self.label.setText(QCoreApplication.translate("MenuWindow", u"More Menu", None))
+        self.label.setText(QCoreApplication.translate("MenuWindow", u"Search friend", None))
 #if QT_CONFIG(tooltip)
         self.closeMoreMenu.setToolTip(QCoreApplication.translate("MenuWindow", u"Close Menu", None))
 #endif // QT_CONFIG(tooltip)
         self.closeMoreMenu.setText("")
-        self.label_2.setText(QCoreApplication.translate("MenuWindow", u"Search friend", None))
-        self.label_3.setText(QCoreApplication.translate("MenuWindow", u"Profile", None))
+        self.friendName.setPlaceholderText(QCoreApplication.translate("MenuWindow", u"Name", None))
+        self.search.setText(QCoreApplication.translate("MenuWindow", u"Search", None))
         self.label_logo.setText("")
         self.label_5.setText(QCoreApplication.translate("MenuWindow", u"Lolify", None))
         self.logoutBtn.setText("")

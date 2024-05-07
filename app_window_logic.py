@@ -187,6 +187,10 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
             self.ui.summonerEmail.setText(summoner_email)
 
             logs = user_data.get("logs", [])
+            likes = user_data.get("likes", [])
+
+            # Tworzenie i wyświetlanie kart ulubionych championów
+            self.create_favorite_champion_widgets(likes)
             self.ui.tableWidget.setColumnWidth(0, 300)
             self.ui.tableWidget.setColumnWidth(1, 200)
             self.ui.tableWidget.setRowCount(len(logs))
@@ -206,3 +210,33 @@ class AppWindowLogic(QMainWindow, Ui_MenuWindow):
 
         else:
             print("Failed to get user data. Status code:", response.status_code)
+
+    def create_favorite_champion_widgets(self, likes):
+
+        # Obliczenie liczby wierszy i kolumn
+        num_columns = 5
+        num_rows = (len(likes) + num_columns - 1) // num_columns
+
+        # Tworzenie i wyświetlanie kart ulubionych championów
+        for i, like in enumerate(likes):
+            champion_data = {
+                "id": like["id"],
+                "name": like["name"],
+                "description": like["description"],
+                "image_link": like["image_link"],
+                "title": like["title"],
+            }
+            row_number = i // num_columns
+            column_number = i % num_columns
+            self.create_favorite_champion_widget(
+                row_number, column_number, champion_data
+            )
+
+    def create_favorite_champion_widget(self, row_number, column_number, champion_data):
+        # Tworzenie widgetu karty ulubionego championa
+        favorite_champion_widget = ChampionCard(champion_data, self.ui.champions_3)
+        favorite_champion_widget.champion_clicked.connect(self.handle_champion_clicked)
+        # Dodanie widgetu do layoutu
+        self.ui.gridLayout_6.addWidget(
+            favorite_champion_widget, row_number, column_number
+        )

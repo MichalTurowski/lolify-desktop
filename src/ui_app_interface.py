@@ -27,7 +27,7 @@ class Ui_MenuWindow(object):
     def setupUi(self, MenuWindow):
         if not MenuWindow.objectName():
             MenuWindow.setObjectName(u"MenuWindow")
-        MenuWindow.resize(800, 469)
+        MenuWindow.resize(800, 493)
         MenuWindow.setMinimumSize(QSize(0, 0))
         MenuWindow.setStyleSheet(u"QPushButton{\n"
 "	text-align: left;\n"
@@ -352,6 +352,7 @@ class Ui_MenuWindow(object):
         self.mainContentContainer.setObjectName(u"mainContentContainer")
         self.verticalLayout_11 = QVBoxLayout(self.mainContentContainer)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
+        self.verticalLayout_11.setContentsMargins(-1, 0, -1, 0)
         self.stackedWidget_2 = QCustomQStackedWidget(self.mainContentContainer)
         self.stackedWidget_2.setObjectName(u"stackedWidget_2")
         self.page_3 = QWidget()
@@ -363,7 +364,7 @@ class Ui_MenuWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 475, 299))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 492, 315))
         self.gridLayout = QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout.setObjectName(u"gridLayout")
         self.paginationButtons = QWidget(self.scrollAreaWidgetContents)
@@ -438,14 +439,25 @@ class Ui_MenuWindow(object):
         self.page_5.setObjectName(u"page_5")
         self.verticalLayout_3 = QVBoxLayout(self.page_5)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
-        self.frame_8 = QFrame(self.page_5)
+        self.scrollArea_3 = QScrollArea(self.page_5)
+        self.scrollArea_3.setObjectName(u"scrollArea_3")
+        self.scrollArea_3.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_3 = QWidget()
+        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(-57, -175, 532, 477))
+        self.verticalLayout_18 = QVBoxLayout(self.scrollAreaWidgetContents_3)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.frame_8 = QFrame(self.scrollAreaWidgetContents_3)
         self.frame_8.setObjectName(u"frame_8")
+        self.frame_8.setMaximumSize(QSize(16777215, 180))
         self.frame_8.setFrameShape(QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QFrame.Raised)
         self.verticalLayout_16 = QVBoxLayout(self.frame_8)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.label_4 = QLabel(self.frame_8)
         self.label_4.setObjectName(u"label_4")
+        self.label_4.setMinimumSize(QSize(0, 30))
+        self.label_4.setMaximumSize(QSize(16777215, 30))
         self.label_4.setFont(font2)
 
         self.verticalLayout_16.addWidget(self.label_4)
@@ -483,25 +495,66 @@ class Ui_MenuWindow(object):
 
         self.verticalLayout_16.addWidget(self.summonerEmail)
 
+        self.label_11 = QLabel(self.frame_8)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setMaximumSize(QSize(16777215, 16777210))
+        self.label_11.setFont(font2)
+        self.label_11.setContextMenuPolicy(Qt.DefaultContextMenu)
+        self.label_11.setLayoutDirection(Qt.LeftToRight)
+        self.label_11.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_3.addWidget(self.frame_8)
+        self.verticalLayout_16.addWidget(self.label_11)
 
-        self.frame_9 = QFrame(self.page_5)
+
+        self.verticalLayout_18.addWidget(self.frame_8)
+
+        self.frame_9 = QFrame(self.scrollAreaWidgetContents_3)
         self.frame_9.setObjectName(u"frame_9")
         self.frame_9.setFrameShape(QFrame.StyledPanel)
         self.frame_9.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_19 = QVBoxLayout(self.frame_9)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.scrollArea_4 = QScrollArea(self.frame_9)
+        self.scrollArea_4.setObjectName(u"scrollArea_4")
+        self.scrollArea_4.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_4 = QWidget()
+        self.scrollAreaWidgetContents_4.setObjectName(u"scrollAreaWidgetContents_4")
+        self.scrollAreaWidgetContents_4.setGeometry(QRect(0, 0, 492, 251))
+        self.gridLayout_5 = QGridLayout(self.scrollAreaWidgetContents_4)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.champions_3 = QWidget(self.scrollAreaWidgetContents_4)
+        self.champions_3.setObjectName(u"champions_3")
+        self.champions_3.setMinimumSize(QSize(474, 233))
+        self.gridLayout_6 = QGridLayout(self.champions_3)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.frame_11 = QFrame(self.champions_3)
+        self.frame_11.setObjectName(u"frame_11")
+        self.frame_11.setFrameShape(QFrame.StyledPanel)
+        self.frame_11.setFrameShadow(QFrame.Raised)
 
-        self.verticalLayout_3.addWidget(self.frame_9)
+        self.gridLayout_6.addWidget(self.frame_11, 0, 0, 1, 1)
 
-        self.frame_10 = QFrame(self.page_5)
+
+        self.gridLayout_5.addWidget(self.champions_3, 0, 0, 1, 1)
+
+        self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_4)
+
+        self.verticalLayout_19.addWidget(self.scrollArea_4)
+
+
+        self.verticalLayout_18.addWidget(self.frame_9)
+
+        self.frame_10 = QFrame(self.scrollAreaWidgetContents_3)
         self.frame_10.setObjectName(u"frame_10")
         self.frame_10.setEnabled(True)
+        self.frame_10.setMaximumSize(QSize(16777215, 180))
         self.frame_10.setFrameShape(QFrame.StyledPanel)
         self.frame_10.setFrameShadow(QFrame.Raised)
         self.verticalLayout_17 = QVBoxLayout(self.frame_10)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.line = QFrame(self.frame_10)
         self.line.setObjectName(u"line")
+        self.line.setMinimumSize(QSize(494, 0))
         self.line.setFont(font2)
         self.line.setFrameShape(QFrame.HLine)
         self.line.setFrameShadow(QFrame.Sunken)
@@ -516,12 +569,17 @@ class Ui_MenuWindow(object):
         __qtablewidgetitem1 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setMinimumSize(QSize(494, 176))
         self.tableWidget.setStyleSheet(u"")
 
         self.verticalLayout_17.addWidget(self.tableWidget)
 
 
-        self.verticalLayout_3.addWidget(self.frame_10)
+        self.verticalLayout_18.addWidget(self.frame_10)
+
+        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
+
+        self.verticalLayout_3.addWidget(self.scrollArea_3)
 
         self.stackedWidget_2.addWidget(self.page_5)
         self.page_4 = QWidget()
@@ -533,7 +591,7 @@ class Ui_MenuWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 475, 313))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 492, 315))
         self.gridLayout_3 = QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
         self.champions_2 = QWidget(self.scrollAreaWidgetContents_2)
@@ -629,7 +687,7 @@ class Ui_MenuWindow(object):
         self.retranslateUi(MenuWindow)
 
         self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_2.setCurrentIndex(2)
+        self.stackedWidget_2.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MenuWindow)
@@ -692,6 +750,7 @@ class Ui_MenuWindow(object):
         self.summonerName.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))
         self.label_10.setText(QCoreApplication.translate("MenuWindow", u"E-mail: ", None))
         self.summonerEmail.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))
+        self.label_11.setText(QCoreApplication.translate("MenuWindow", u"Favorites", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MenuWindow", u"Logs", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)

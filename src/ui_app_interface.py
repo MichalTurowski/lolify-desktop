@@ -374,48 +374,48 @@ class Ui_MenuWindow(object):
 "")
         self.horizontalLayout_9 = QHBoxLayout(self.paginationButtons)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
-        self.pushButton = QPushButton(self.paginationButtons)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMaximumSize(QSize(40, 40))
+        self.allBtn = QPushButton(self.paginationButtons)
+        self.allBtn.setObjectName(u"allBtn")
+        self.allBtn.setMaximumSize(QSize(40, 40))
         font3 = QFont()
         font3.setHintingPreference(QFont.PreferDefaultHinting)
-        self.pushButton.setFont(font3)
+        self.allBtn.setFont(font3)
 
-        self.horizontalLayout_9.addWidget(self.pushButton)
+        self.horizontalLayout_9.addWidget(self.allBtn)
 
-        self.pushButton_2 = QPushButton(self.paginationButtons)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMaximumSize(QSize(40, 40))
+        self.topBtn_2 = QPushButton(self.paginationButtons)
+        self.topBtn_2.setObjectName(u"topBtn_2")
+        self.topBtn_2.setMaximumSize(QSize(40, 40))
 
-        self.horizontalLayout_9.addWidget(self.pushButton_2)
+        self.horizontalLayout_9.addWidget(self.topBtn_2)
 
-        self.pushButton_3 = QPushButton(self.paginationButtons)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setMaximumSize(QSize(60, 40))
+        self.jungleBtn = QPushButton(self.paginationButtons)
+        self.jungleBtn.setObjectName(u"jungleBtn")
+        self.jungleBtn.setMaximumSize(QSize(60, 40))
 
-        self.horizontalLayout_9.addWidget(self.pushButton_3)
+        self.horizontalLayout_9.addWidget(self.jungleBtn)
 
-        self.pushButton_4 = QPushButton(self.paginationButtons)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setMaximumSize(QSize(40, 40))
+        self.midBtn = QPushButton(self.paginationButtons)
+        self.midBtn.setObjectName(u"midBtn")
+        self.midBtn.setMaximumSize(QSize(40, 40))
 
-        self.horizontalLayout_9.addWidget(self.pushButton_4)
+        self.horizontalLayout_9.addWidget(self.midBtn)
 
-        self.pushButton_5 = QPushButton(self.paginationButtons)
-        self.pushButton_5.setObjectName(u"pushButton_5")
-        self.pushButton_5.setMaximumSize(QSize(40, 40))
-        self.pushButton_5.setStyleSheet(u"QPushButton {\n"
+        self.adcBtn = QPushButton(self.paginationButtons)
+        self.adcBtn.setObjectName(u"adcBtn")
+        self.adcBtn.setMaximumSize(QSize(40, 40))
+        self.adcBtn.setStyleSheet(u"QPushButton {\n"
 "    text-align: center;\n"
 "}\n"
 "")
 
-        self.horizontalLayout_9.addWidget(self.pushButton_5)
+        self.horizontalLayout_9.addWidget(self.adcBtn)
 
-        self.pushButton_6 = QPushButton(self.paginationButtons)
-        self.pushButton_6.setObjectName(u"pushButton_6")
-        self.pushButton_6.setMaximumSize(QSize(60, 40))
+        self.supportBtn = QPushButton(self.paginationButtons)
+        self.supportBtn.setObjectName(u"supportBtn")
+        self.supportBtn.setMaximumSize(QSize(60, 40))
 
-        self.horizontalLayout_9.addWidget(self.pushButton_6)
+        self.horizontalLayout_9.addWidget(self.supportBtn)
 
 
         self.gridLayout.addWidget(self.paginationButtons, 0, 0, 1, 1, Qt.AlignHCenter|Qt.AlignTop)
@@ -589,7 +589,7 @@ class Ui_MenuWindow(object):
         self.retranslateUi(MenuWindow)
 
         self.stackedWidget.setCurrentIndex(1)
-        self.stackedWidget_2.setCurrentIndex(1)
+        self.stackedWidget_2.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MenuWindow)
@@ -641,12 +641,12 @@ class Ui_MenuWindow(object):
         self.close_window.setToolTip(QCoreApplication.translate("MenuWindow", u"Close Window", None))
 #endif // QT_CONFIG(tooltip)
         self.close_window.setText("")
-        self.pushButton.setText(QCoreApplication.translate("MenuWindow", u"ALL", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MenuWindow", u"TOP", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MenuWindow", u"JUNGLE", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MenuWindow", u"MID", None))
-        self.pushButton_5.setText(QCoreApplication.translate("MenuWindow", u"ADC", None))
-        self.pushButton_6.setText(QCoreApplication.translate("MenuWindow", u"SUPPORT", None))
+        self.allBtn.setText(QCoreApplication.translate("MenuWindow", u"ALL", None))
+        self.topBtn_2.setText(QCoreApplication.translate("MenuWindow", u"TOP", None))
+        self.jungleBtn.setText(QCoreApplication.translate("MenuWindow", u"JUNGLE", None))
+        self.midBtn.setText(QCoreApplication.translate("MenuWindow", u"MID", None))
+        self.adcBtn.setText(QCoreApplication.translate("MenuWindow", u"ADC", None))
+        self.supportBtn.setText(QCoreApplication.translate("MenuWindow", u"SUPPORT", None))
         self.label_4.setText(QCoreApplication.translate("MenuWindow", u"Profile", None))
         self.label_6.setText(QCoreApplication.translate("MenuWindow", u"Summoner:", None))
         self.summonerName.setText(QCoreApplication.translate("MenuWindow", u"TextLabel", None))

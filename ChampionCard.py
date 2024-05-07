@@ -30,7 +30,9 @@ class ChampionCard(QWidget):
 
         self.setLayout(layout)
         self.setMinimumWidth(150)  # Minimalna szerokość
-        self.setMaximumWidth(200)  # Maksymalna szerokość
+        self.setMaximumWidth(500)  # Maksymalna szerokość
+        self.setMinimumHeight(100)
+        self.setMaximumHeight(600)
         self.setStyleSheet(
             """
             QWidget {

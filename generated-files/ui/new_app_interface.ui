@@ -679,7 +679,7 @@
              <item>
               <widget class="QCustomQStackedWidget" name="stackedWidget_2">
                <property name="currentIndex">
-                <number>1</number>
+                <number>0</number>
                </property>
                <widget class="QWidget" name="page_3">
                 <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -714,7 +714,7 @@
                        </property>
                        <layout class="QHBoxLayout" name="horizontalLayout_9">
                         <item>
-                         <widget class="QPushButton" name="pushButton">
+                         <widget class="QPushButton" name="allBtn">
                           <property name="maximumSize">
                            <size>
                             <width>40</width>
@@ -732,7 +732,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_2">
+                         <widget class="QPushButton" name="topBtn_2">
                           <property name="maximumSize">
                            <size>
                             <width>40</width>
@@ -745,7 +745,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_3">
+                         <widget class="QPushButton" name="jungleBtn">
                           <property name="maximumSize">
                            <size>
                             <width>60</width>
@@ -758,7 +758,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_4">
+                         <widget class="QPushButton" name="midBtn">
                           <property name="maximumSize">
                            <size>
                             <width>40</width>
@@ -771,7 +771,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_5">
+                         <widget class="QPushButton" name="adcBtn">
                           <property name="maximumSize">
                            <size>
                             <width>40</width>
@@ -790,7 +790,7 @@
                          </widget>
                         </item>
                         <item>
-                         <widget class="QPushButton" name="pushButton_6">
+                         <widget class="QPushButton" name="supportBtn">
                           <property name="maximumSize">
                            <size>
                             <width>60</width>

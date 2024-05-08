@@ -119,6 +119,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             print("Registered and logged in successfully.")
             self.close()
             app_logic = AppWindowLogic()
+            app_logic.update_top_champions_ui()
         else:
             print("Failed to register. Status code:", response.status_code)
             self.showNotification("Something went wrong.")
